@@ -61,7 +61,7 @@
                             Painel Rica
                         </a>
                     @else
-                        <a href=""
+                        <a href="{{ route('login') }}"
                             class="inline-block px-5 py-1.5 text-[#1b1b18] border border-transparent hover:border-[#19140035] rounded-sm text-sm leading-normal">
                             Entrar
                         </a>
