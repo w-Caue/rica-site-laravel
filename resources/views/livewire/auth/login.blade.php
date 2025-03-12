@@ -2,37 +2,35 @@
     <div class="flex flex-col gap-6">
         <x-auth-header title="Entre na sua conta" description="Digite seu cnpj e senha abaixo para efetuar login" />
 
-        <!-- Session Status -->
-        {{-- <x-auth-session-status class="text-center" :status="session('status')" /> --}}
-
         <form wire:submit="login" class="flex flex-col gap-6">
             <!-- Cnpj -->
-            {{-- <flux:input wire:model="cnpj" label="{{ __('Cnpj') }}" name="cnpj" required autofocus autocomplete="cnpj"
-                placeholder="12.3456.678/0009-10"
-                x-mask:dynamic="
-                $input.startsWith('18') ? '99.999.999/9999-99' : '99.999.999/9999-99'
-            " /> --}}
-
-            {{-- <x-input label="Cnpj" class="border-2 border-gray-300 pl-2" placeholder="00.000.000/0000-00"
-                x-mask:dynamic="
-                $input.startsWith('18') ? '99.999.999/9999-99' : '99.999.999/9999-99'" /> --}}
+            <div>
+                <x-form.label value="Cnpj" />
+                <x-form.input placeholder="00.000.000/0000-00"
+                    x-mask:dynamic="
+                $input.startsWith('18') ? '99.999.999/9999-99' : '99.999.999/9999-99'" />
+            </div>
 
             <!-- Password -->
             <div class="relative">
-                {{-- <x-password label="Password" hint="Insert your best password" value="TallStackUi" /> --}}
+                <x-form.label value="Senha" />
+                <x-form.input type="password" placeholder="********" />
             </div>
 
-            <!-- Remember Me -->
-            {{-- <flux:checkbox wire:model="remember" label="{{ __('Lembre-me') }}" /> --}}
+            <div class="flex justify-center">
+                {{-- <x-form.button" label="Entrar"/> --}}
 
-            <div class="flex items-center justify-end">
-                {{-- <flux:button variant="primary" type="submit" class="w-full">{{ __('Entrar') }}</flux:button> --}}
+                <button
+                    class="flex items-center font-semibold justify-center gap-1 text-blue-400 bg-blue-200 rounded-xl p-2 transition-all hover:scale-95 focus:outline-blue-600">
+                    Entrar
+                </button>
             </div>
         </form>
 
         <div class="space-x-1 text-center text-sm text-zinc-600 dark:text-zinc-400">
-            Não tem uma conta?
+            Não é cliente Rica?
             {{-- <flux:link href="{{ route('register') }}" wire:navigate>Inscreva-se</flux:link> --}}
+            <a href="" wire:navigate class="hover:text-gray-500 hover:underline">Inscreva-se</a>
         </div>
     </div>
 </div>
