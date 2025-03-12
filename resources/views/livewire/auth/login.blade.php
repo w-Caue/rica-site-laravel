@@ -21,7 +21,7 @@
                 {{-- <x-form.button" label="Entrar"/> --}}
 
                 <button
-                    class="flex items-center font-semibold justify-center gap-1 text-blue-400 bg-blue-200 rounded-xl p-2 transition-all hover:scale-95 focus:outline-blue-600">
+                    class="text-sm uppercase flex items-center font-semibold justify-center gap-1 text-gray-600 bg-blue-200 rounded-xl p-2 transition-all hover:scale-95 focus:outline-blue-600">
                     Entrar
                 </button>
             </div>
