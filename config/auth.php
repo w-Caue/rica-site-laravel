@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'rica' => [
+            'driver' => 'session',
+            'provider' => 'rica_clientes',
+        ],
     ],
 
     /*
@@ -63,6 +68,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
+        ],
+
+        'rica_clientes' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\RicaClientes::class,
         ],
 
         // 'users' => [
