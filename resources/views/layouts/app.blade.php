@@ -31,10 +31,10 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased text-gray-600 dark:text-gray-400 bg-gray-200 dark:bg-gray-900">
+<body x-data="sidebar()" class="font-sans antialiased text-gray-600 dark:text-gray-400 bg-gray-200 dark:bg-gray-900">
     <div class="flex h-screen">
 
-        {{-- @include('layouts.tenant.sidebar') --}}
+        @include('layouts.sidebar')
 
         <div class="flex flex-col flex-1 ">
             {{-- @include('layouts.tenant.navbar') --}}
@@ -49,6 +49,8 @@
     </div>
 
     @livewireScripts
+
+    <script src=" {{ asset('js/main.js') }}"></script>
 
 </body>
 
