@@ -12,12 +12,12 @@
                     <div class="border border-gray-300 mt-2 mb-6"></div>
 
                     <div class="space-y-6">
-                        <div class="w-full flex flex-col sm:flex-row gap-4">
+                        <div class="w-full flex flex-col flex-wrap sm:flex-row gap-4">
                             <div class="">
                                 <x-form.label value="Cód" />
                                 <div class="w-22">
-                                    <x-form.input class="uppercase tracking-widest text-sm" id="razao"
-                                        wire:model="codrcfin" disabled/>
+                                    <x-form.input class="uppercase tracking-widest text-sm" id="codigo"
+                                        wire:model="codrcfin" disabled />
                                 </div>
 
                                 @error('codrcfin')
@@ -29,7 +29,8 @@
                                 <x-form.label value="Cnpj" />
                                 <x-form.input wire:model="cnpj" placeholder="00.000.000/0000-00"
                                     x-mask:dynamic="
-                                $input.startsWith('18') ? '99.999.999/9999-99' : '99.999.999/9999-99'" disabled/>
+                                $input.startsWith('18') ? '99.999.999/9999-99' : '99.999.999/9999-99'"
+                                    disabled />
 
                                 @error('cnpj')
                                     <span class="font-semibold text-red-600 error">{{ $message }}</span>
@@ -39,9 +40,19 @@
                             <div class="w-full">
                                 <x-form.label value="Razão Social" />
                                 <x-form.input class="uppercase tracking-widest text-sm" id="razao"
-                                    wire:model="razao" disabled/>
+                                    wire:model="razao" disabled />
 
                                 @error('razao')
+                                    <span class="font-semibold text-red-600 error">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="w-full">
+                                <x-form.label value="Fantasia" />
+                                <x-form.input class="uppercase tracking-widest text-sm" id="fantasia"
+                                    wire:model="fantatia" disabled />
+
+                                @error('fantasia')
                                     <span class="font-semibold text-red-600 error">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -50,6 +61,87 @@
                 </div>
             </div>
             <!-- /CADASTRO -->
+
+            <!-- CONTATO -->
+            <div id="informacao-cadastro" class="w-full">
+                <div class="h-auto px-5 py-5 bg-white rounded-xl shadow-md">
+                    <h1 class="text-sm tracking-widest font-semibold uppercase text-gray-400">
+                        Informações Para Contato
+                    </h1>
+                    <div class="border border-gray-300 mt-2 mb-6"></div>
+
+                    <div class="space-y-6">
+                        <div class="w-full flex flex-col flex-wrap sm:flex-row gap-4">
+                            <div class="">
+                                <x-form.label value="Telefone" />
+                                <div class=" w-44">
+                                    <x-form.input class="uppercase tracking-widest text-sm" id="telefone"
+                                        wire:model="telefone" disabled />
+                                </div>
+                            </div>
+
+                            <div class="">
+                                <x-form.label value="Contato" />
+                                <div class=" w-44">
+                                    <x-form.input class="uppercase tracking-widest text-sm" id="contato"
+                                        wire:model="contato" disabled />
+                                </div>
+                            </div>
+
+                            <div class="">
+                                <x-form.label value="Email" />
+                                <div class="w-72">
+                                    <x-form.input class="uppercase tracking-widest text-sm" id="email"
+                                        wire:model="email" disabled />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /CONTATO -->
+
+            <!-- LIMITES -->
+            <div id="informacao-cadastro" class="w-full">
+                <div class="h-auto px-5 py-5 bg-white rounded-xl shadow-md">
+                    <h1 class="text-sm tracking-widest font-semibold uppercase text-gray-400">
+                        Informações Para Contato
+                    </h1>
+                    <div class="border border-gray-300 mt-2 mb-6"></div>
+
+                    <div class="space-y-6">
+                        <div class="w-full flex flex-col flex-wrap gap-4">
+                            <div class="flex gap-4">
+                                <div class="">
+                                    <x-form.label value="Data Limite" />
+                                    <div class=" w-30">
+                                        <x-form.input class="uppercase tracking-widest text-sm" id="limite"
+                                            wire:model="dtLimite" disabled />
+                                    </div>
+                                </div>
+
+                                <div class="">
+                                    <x-form.label value="N° Terminais" />
+                                    <div class=" w-20">
+                                        <x-form.input class="uppercase tracking-widest text-sm" id="terminais"
+                                            wire:model="terminais" disabled />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="">
+                                <x-form.label value="Observação" />
+                                <div class=" w-44">
+                                    <x-form.input type="textarea" class="uppercase tracking-widest text-sm"
+                                        id="observacao" wire:model="observacao" disabled />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /LIMITES -->
 
             <!-- PROCESSOS MOBILE -->
             <div class="w-full block md:hidden">
