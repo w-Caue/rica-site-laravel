@@ -6,7 +6,7 @@
             <!-- Cnpj -->
             <div>
                 <x-form.label value="Cnpj" />
-                <x-form.input placeholder="00.000.000/0000-00"
+                <x-form.input wire:model="cnpj" placeholder="00.000.000/0000-00"
                     x-mask:dynamic="
                 $input.startsWith('18') ? '99.999.999/9999-99' : '99.999.999/9999-99'" />
             </div>
@@ -14,7 +14,7 @@
             <!-- Password -->
             <div class="relative">
                 <x-form.label value="Senha" />
-                <x-form.input type="password" placeholder="********" />
+                <x-form.input wire:model="senha" type="password" placeholder="********" />
             </div>
 
             <div class="flex justify-center">
