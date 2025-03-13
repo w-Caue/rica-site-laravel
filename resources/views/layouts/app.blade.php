@@ -19,6 +19,7 @@
         * {
             font-family: "Nunito", sans-serif;
             /* Nunito */
+            letter-spacing: 3px;
         }
 
         [x-cloak] {
@@ -31,13 +32,13 @@
     @livewireStyles
 </head>
 
-<body x-data="sidebar()" class="font-sans antialiased text-gray-600 dark:text-gray-400 bg-gray-200 dark:bg-gray-900">
+<body x-data="sidebar()" class="font-sans antialiased text-gray-600 bg-gray-200">
     <div class="flex h-screen">
 
         @include('layouts.sidebar')
 
         <div class="flex flex-col flex-1 ">
-            {{-- @include('layouts.tenant.navbar') --}}
+            @include('layouts.navbar')
             <main class="h-full w-full pb-16 mt-4 overflow-y-auto">
 
                 <div class="px-6 sm:mx-auto xl:mx-9">

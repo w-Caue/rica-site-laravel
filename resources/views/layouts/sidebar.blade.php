@@ -2,7 +2,7 @@
 
     <div x-cloak x-on:mouseover="sidebar.full = true"
         x-on:mouseleave="sidebar.full = false, dropdown.open = false, dropdownProduto.open = false, dropdownMovimentacao.open = false, dropdownContas.open = false"
-        class="flex-shrink-0 bg-white transition-all duration-300 mx-5 my-4 rounded-lg shadow-lg shadow-gray-300 p-4 hidden sm:block dark:bg-gray-800 dark:shadow-gray-700"
+        class="flex-shrink-0 bg-white transition-all duration-300 mx-5 my-4 rounded-lg shadow-lg shadow-gray-300 p-4 hidden sm:block"
         x-bind:class="{
             'w-64': sidebar.full,
             'w-64 sm:w-20': !sidebar.full,
@@ -15,17 +15,17 @@
 
             <img aria-hidden="true" class="w-10 rounded" src="{{ asset('img/logo.jpeg') }}" alt="Rica Informática" />
 
-            <span class="text-blue-500 font-black dark:text-white" x-bind:class="sidebar.full ? '' : 'hidden'">
+            <span class="text-gray-400 font-black " x-bind:class="sidebar.full ? '' : 'hidden'">
                 Rica Informática
             </span>
         </div>
         <div class="relative mt-4 space-y-4 text-xs uppercase font-bold">
 
-            <div class="border dark:border-gray-700"></div>
+            <div class="border border-gray-200"></div>
 
             {{-- HOME --}}
             <a href="{{ route('rica.dashboard') }}"
-                class="relative flex justify-between items-center space-x-2 p-2 cursor-pointer {{ request()->routeIs('tenant.dashboard') ? 'text-blue-500 border-l-2 border-blue-500 ' : 'text-gray-400 hover:text-blue-500' }}"
+                class="relative flex justify-between items-center space-x-2 p-2 cursor-pointer {{ request()->routeIs('rica.dashboard') ? 'text-blue-500 border-l-2 border-blue-500 ' : 'text-gray-400 hover:text-blue-500' }}"
                 x-bind:class="{
                     'justify-start': sidebar.full,
                     'sm:justify-center': !sidebar.full,
@@ -43,7 +43,7 @@
 
             {{-- PERFIL --}}
             <a href="{{ route('rica.perfil') }}"
-                class="relative flex justify-between items-center space-x-2 p-2 cursor-pointer {{ request()->routeIs('tenant.dashboard') ? 'text-blue-500 border-l-2 border-blue-500 ' : 'text-gray-400 hover:text-blue-500' }}"
+                class="relative flex justify-between items-center space-x-2 p-2 cursor-pointer {{ request()->routeIs('rica.perfil') ? 'text-blue-500 border-l-2 border-blue-500 ' : 'text-gray-400 hover:text-blue-500' }}"
                 x-bind:class="{
                     'justify-start': sidebar.full,
                     'sm:justify-center': !sidebar.full,
@@ -54,12 +54,12 @@
                     <h1 x-clock
                         x-bind:class="!sidebar.full && tooltip.show ? visibleClass : '' || !sidebar.full && !tooltip.show ?
                             'sm:hidden' : ''">
-                        Perfil
+                        Meu Cadastro
                     </h1>
                 </div>
             </a>
 
-            <div class="border dark:border-gray-700"></div>
+            <div class="border border-gray-200"></div>
         </div>
     </div>
 </div>
