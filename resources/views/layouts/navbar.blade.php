@@ -18,8 +18,8 @@
 
             <div>
                 @hasSection('titulo')
-                    <h1 class="text-lg uppercase tracking-widest font-bold text-blue-500">@yield('titulo')</h1>
-                    <span class="text-sm uppercase tracking-widest font-bold text-orange-500">@yield('subtitulo')</span>
+                    <h1 class="text-lg uppercase tracking-widest font-bold text-blue-500">{{ Auth::user()->NOME }}</h1>
+                    <span class="text-sm uppercase tracking-widest font-bold text-orange-500">@yield('titulo')</span>
                 @endif
             </div>
         </div>
