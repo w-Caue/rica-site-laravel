@@ -19,7 +19,9 @@ class Login extends Component
         $cnpj = preg_replace(array('/[^a-z0-9]/i'), array('', ''), $this->cnpj);
 
         $cliente = RicaClientes::select(
+            'CODIGO',
             'CNPJ',
+            'NOME',
             'CODIGO_RCFIN'
         )
             ->where('CNPJ', $cnpj)->first();

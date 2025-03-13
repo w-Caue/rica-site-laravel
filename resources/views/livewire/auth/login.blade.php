@@ -29,7 +29,6 @@
 
         <div class="space-x-1 text-center text-sm text-zinc-600 dark:text-zinc-400">
             Não é cliente Rica?
-            {{-- <flux:link href="{{ route('register') }}" wire:navigate>Inscreva-se</flux:link> --}}
             <a href="{{ route('register') }}" wire:navigate class="hover:text-gray-500 hover:underline">Inscreva-se</a>
         </div>
     </div>

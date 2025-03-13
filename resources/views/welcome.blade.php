@@ -26,10 +26,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body
-    class="bg-[#FDFDFC] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
+<body class="bg-[#FDFDFC] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
     <header id="navbar" class="w-full container text-sm mb-6 not-has-[nav]:hidden sticky top-1 z-50">
-        {{-- @if (Route::has('login')) --}}
+        @if (Route::has('login'))
             <nav class="flex items-center justify-between gap-4">
                 <div class="flex items-center">
                     <a href="/" class="inline-block py-1.5 gap-2">
@@ -56,7 +55,7 @@
 
                 <div>
                     @auth
-                        <a href="{{ url('/dashboard') }}"
+                        <a href="{{ route('rica.dashboard') }}"
                             class="inline-block px-5 py-1.5 border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] rounded-sm text-sm leading-normal">
                             Painel Rica
                         </a>
@@ -66,19 +65,20 @@
                             Entrar
                         </a>
 
-                        {{-- @if (Route::has('register')) --}}
+                        @if (Route::has('register'))
                             <a href="{{ route('register') }}"
                                 class="inline-block px-5 py-1.5 border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] rounded-sm text-sm leading-normal">
                                 Registre-se
                             </a>
-                        {{-- @endif --}}
+                        @endif
                     @endauth
                 </div>
             </nav>
-        {{-- @endif --}}
+        @endif
     </header>
 
-    <div id="content" class="container flex w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0 mt-12">
+    <div id="content"
+        class="container flex w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0 mt-12">
         <main class="flex justify-between items-center md:px-5 w-full flex-col-reverse lg:flex-row">
             <div class="space-y-7 lg:max-w-4xl">
                 <span class="text-blue-500 font-medium pl-2">Rica Informática</span>

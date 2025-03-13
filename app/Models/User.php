@@ -11,6 +11,14 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected $connection = 'sistema';
+    // protected $guard = 'rica';
+
+    protected $table = 'CLIENTES';
+    protected $primaryKey = 'CODIGO';
+    public $timestamps = false;
+    public $incrementing = false;
+
     /**
      * The attributes that are mass assignable.
      *
