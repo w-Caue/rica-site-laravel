@@ -3,19 +3,29 @@
 namespace App\Livewire\Auth;
 
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class Register extends Component
 {
+    #[Validate('required')]
     public $cnpj;
 
+    #[Validate('required')]
     public $nome;
 
+    #[Validate('required|email')]
     public $email;
 
-    public function getRegister()
+    public $button = false;
+
+    public function updatedEmail()
     {
-        dd($this->cnpj, $this->nome, $this->email);
+        if ($this->validate()) {
+            return $this->button = true;
+        }
+
+        $this->button = false;
     }
 
     #[Layout('layouts.auth')]

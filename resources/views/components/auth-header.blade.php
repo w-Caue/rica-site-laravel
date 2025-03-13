@@ -3,7 +3,7 @@
     'description',
 ])
 
-<div class="flex w-full flex-col gap-2 text-center">
+<div class="flex w-full flex-col gap-2 text-center ">
     <h1 class="text-xl font-medium">{{ $title }}</h1>
-    <p class="text-center text-sm">{{ $description }}</p>
+    <p class="text-center text-sm text-zinc-400">{{ $description }}</p>
 </div>
