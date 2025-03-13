@@ -48,6 +48,19 @@ return [
 
         ],
 
+        'helpdesk' => [
+            'driver'   => 'firebird',
+            'host'     => '177.71.139.100',
+            'database' => '/home/databases/helpdesk/HELPDESK.FDB',
+            'username' => 'sysdba',
+            'password' => 'masterkey',
+            'charset' => 'utf8',
+            'collation' => 'PT_BR',
+            'port'     => 3050,
+            'collation' => 'PT_BR',
+            'prefix' => '',
+        ],
+
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DB_URL'),
