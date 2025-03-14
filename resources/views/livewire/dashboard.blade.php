@@ -15,13 +15,13 @@
             </a>
 
             <a title="Total de clientes que você tem acesso">
-                <x-card.icon-card title="Financeiro" subtitle="Verifique aqui">
+                <x-card.icon-card title="Financeiro" subtitle="Verifique suas contas">
                     <div class="p-3 mr-4 text-purple-500 bg-purple-100 rounded-full">
                         <x-icons.tickets />
                     </div>
                 </x-card.icon-card>
             </a>
-            
+
         </div>
         <!--./Cards-->
     </div>
@@ -87,7 +87,7 @@
         </div>
 
         <div class="w-full">
-           
+
         </div>
     </div>
 </div>
