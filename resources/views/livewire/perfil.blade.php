@@ -111,29 +111,35 @@
                         <div class="w-full flex flex-col flex-wrap gap-4">
                             <div class="flex gap-4">
                                 <div class="">
-                                    <x-form.label value="Data Limite" />
+                                    <x-form.label value="Data Vencimento" />
                                     <div class=" w-36">
-                                        <x-form.input id="limite"
-                                            wire:model="form.dtLimite" type="date" disabled />
+                                        <x-form.input id="vencimento" wire:model="form.dtVencimento" type="date"
+                                            disabled />
                                     </div>
                                 </div>
+
+                                {{-- <div class="">
+                                    <x-form.label value="Data Limite" />
+                                    <div class=" w-36">
+                                        <x-form.input id="limite" wire:model="form.dtLimite" type="date"
+                                            disabled />
+                                    </div>
+                                </div> --}}
 
                                 <div class="">
                                     <x-form.label value="N° Terminais" />
                                     <div class="w-16">
-                                        <x-form.input id="terminais"
-                                            wire:model="form.terminais" disabled />
+                                        <x-form.input id="terminais" wire:model="form.terminais" disabled />
+                                    </div>
+                                </div>
+
+                                <div class="">
+                                    <x-form.label value="Versão Rcfin" />
+                                    <div class="w-26">
+                                        <x-form.input id="versaoRcfin" wire:model="form.versaoRcfin" disabled />
                                     </div>
                                 </div>
                             </div>
-
-                            {{-- <div class="">
-                                <x-form.label value="Observação" />
-                                <div class="">
-                                    <x-form.textarea id="observacao"
-                                        wire:model="form.observacao" disabled />
-                                </div>
-                            </div> --}}
                         </div>
                     </div>
                 </div>

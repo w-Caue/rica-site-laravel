@@ -25,7 +25,11 @@ class PerfilForm extends Form
 
     public $dtLimite;
 
+    public $dtVencimento;
+
     public $terminais;
+
+    public $versaoRcfin;
 
     public $observacao;
 
@@ -49,7 +53,8 @@ class PerfilForm extends Form
         $this->contato = $cliente->CL_CONTATO;
         $this->email = $cliente->CL_EMAIL;
 
-        $this->dtLimite = $cliente->DATA_LIMITE;
-        $this->terminais = $cliente->RICA_TERMINAIS ;
+        $this->versaoRcfin = $cliente->VERSAO_SISTEMA;
+        $this->dtVencimento = $cliente->VENCIMENTO_BOLETO;
+        $this->terminais = $cliente->RICA_TERMINAIS;
     }
 }
