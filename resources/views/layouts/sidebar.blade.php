@@ -61,8 +61,8 @@
             </a>
 
             {{-- TICKET --}}
-            <a href="{{ route('rica.perfil') }}"
-                class="relative flex justify-between items-center space-x-2 p-2 cursor-pointer {{ request()->routeIs('rica.perfil') ? 'text-blue-500 border-l-2 border-blue-500 ' : 'text-gray-400 hover:text-blue-500' }}"
+            <a href="{{ route('rica.ticket') }}"
+                class="relative flex justify-between items-center space-x-2 p-2 cursor-pointer {{ request()->routeIs('rica.ticket') ? 'text-blue-500 border-l-2 border-blue-500 ' : 'text-gray-400 hover:text-blue-500' }}"
                 x-bind:class="{
                     'justify-start': sidebar.full,
                     'sm:justify-center': !sidebar.full,
@@ -96,12 +96,12 @@
         <div class="flex items-center justify-between gap-2">
             <img class="w-10 rounded" src="{{ asset('img/logo.jpeg') }}" alt="logo empresa">
 
-            <span class="font-black uppercase text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-orange-600">
+            <span
+                class="font-black uppercase text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-orange-600">
                 Rica Web
             </span>
 
-            <button x-on:click="sidebar.navOpen = !sidebar.navOpen"
-                class="block lg:hidden focus:outline-none">
+            <button x-on:click="sidebar.navOpen = !sidebar.navOpen" class="block lg:hidden focus:outline-none">
                 <!-- Close Icon -->
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-6" x-bind:class="sidebar.navOpen ? '' : 'hidden'">
@@ -146,6 +146,24 @@
                         x-bind:class="!sidebar.full && tooltip.show ? visibleClass : '' || !sidebar.full && !tooltip.show ?
                             'sm:hidden' : ''">
                         Perfil
+                    </h1>
+                </div>
+            </a>
+
+            {{-- TICKET --}}
+            <a href="{{ route('rica.ticket') }}"
+                class="relative flex justify-between items-center space-x-2 p-2 cursor-pointer {{ request()->routeIs('rica.ticket') ? 'text-blue-500 border-l-2 border-blue-500 ' : 'text-gray-400 hover:text-blue-500' }}"
+                x-bind:class="{
+                    'justify-start': sidebar.full,
+                    'sm:justify-center': !sidebar.full,
+                }">
+                <div class="flex items-center space-x-2">
+                    <x-icons.user class="size-6" />
+
+                    <h1 x-clock
+                        x-bind:class="!sidebar.full && tooltip.show ? visibleClass : '' || !sidebar.full && !tooltip.show ?
+                            'sm:hidden' : ''">
+                        Ticket
                     </h1>
                 </div>
             </a>

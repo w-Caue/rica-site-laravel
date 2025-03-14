@@ -5,6 +5,7 @@ use App\Livewire\Auth\Register;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Dashboard;
 use App\Livewire\Perfil;
+use App\Livewire\Ticket;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,4 +27,7 @@ Route::middleware('auth')->prefix('rica')->name('rica.')->group(function () {
 
     Route::get('/perfil', Perfil::class)
         ->name('perfil');
+
+    Route::get('/ticket', Ticket::class)
+        ->name('ticket');
 });
