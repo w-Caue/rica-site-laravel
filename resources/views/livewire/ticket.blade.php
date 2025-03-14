@@ -14,8 +14,7 @@
                     <label>
                         <div class="flex items-end gap-1">
                             <div class="w-full">
-                                <span
-                                    class="text-sm uppercase font-bold tracking-widest text-gray-500 ">
+                                <span class="text-sm uppercase font-bold tracking-widest text-gray-500 ">
                                     Pesquisando por
                                 </span>
                                 <x-form.input class="uppercase tracking-widest text-sm" placeholder="Pesquise por"
@@ -171,11 +170,10 @@
                         </thead>
 
                         <tbody class="bg-white divide-y divide-gray-200">
-                            {{-- @forelse ($tickets as $cliente)
-                                <tr wire:key="{{ $cliente->CODIGO }}"
-                                    class="font-semibold text-sm ">
+                            @forelse ($tickets as $cliente)
+                                <tr wire:key="{{ $cliente->ID }}" class="font-semibold text-sm ">
                                     <td class="py-3 text-center text-blue-500">
-                                        #{{ $cliente->CODIGO }}
+                                        #{{ $cliente->ID }}
                                     </td>
 
                                     <td class="py-3 flex justify-center items-center">
@@ -183,11 +181,11 @@
                                     </td>
 
                                     <td class="py-3 text-center">
-                                        {{ $cliente->FANTASIA }}
+                                        {{ $cliente->CLIENTE_USUARIO }}
                                     </td>
 
                                     <td class="py-3 text-xs tracking-wider text-center">
-                                        {{ $cliente->CIDADE }}
+                                        {{ $cliente->DATA_CRIACAO }}
                                     </td>
 
                                     <td class="py-3 text-center">
@@ -201,7 +199,7 @@
                                         Sem registros
                                     </h1>
                                 </div>
-                            @endforelse --}}
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
