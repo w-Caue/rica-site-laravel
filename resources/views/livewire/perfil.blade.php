@@ -60,7 +60,7 @@
             <!-- /CADASTRO -->
 
             <!-- CONTATO -->
-            <div id="informacao-cadastro" class="w-full">
+            <div id="contato" class="w-full">
                 <div class="h-auto px-5 py-5 bg-white rounded-xl shadow-md">
                     <h1 class="text-sm tracking-widest font-semibold uppercase text-gray-400">
                         Informações Para Contato
@@ -100,7 +100,7 @@
             <!-- /CONTATO -->
 
             <!-- LIMITES -->
-            <div id="informacao-cadastro" class="w-full">
+            <div id="limites" class="w-full">
                 <div class="h-auto px-5 py-5 bg-white rounded-xl shadow-md">
                     <h1 class="text-sm tracking-widest font-semibold uppercase text-gray-400">
                         Limites
@@ -117,14 +117,6 @@
                                             disabled />
                                     </div>
                                 </div>
-
-                                {{-- <div class="">
-                                    <x-form.label value="Data Limite" />
-                                    <div class=" w-36">
-                                        <x-form.input id="limite" wire:model="form.dtLimite" type="date"
-                                            disabled />
-                                    </div>
-                                </div> --}}
 
                                 <div class="">
                                     <x-form.label value="N° Terminais" />
@@ -145,6 +137,73 @@
                 </div>
             </div>
             <!-- /LIMITES -->
+
+            <!-- MODULOS -->
+            <div id="modulos" class="w-full">
+                <div class="h-auto px-5 py-5 bg-white rounded-xl shadow-md">
+                    <h1 class="text-sm tracking-widest font-semibold uppercase text-gray-400">
+                        Módulos
+                    </h1>
+                    <div class="border border-gray-300 mt-2 mb-6"></div>
+
+                    <div class="space-y-6">
+                        <x-form.label value="Fiscais Habilitados" />
+
+                        <div class="mt-2 flex flex-wrap gap-4">
+
+                            @if ($form->moduloNfe == 'S')
+                                <button class="flex flex-col items-center gap-1 p-2 rounded-lg bg-gray-50">
+                                    <img class="w-20" src="{{ asset('img/nfe.png') }}" alt="">
+
+                                    <span class="text-sm font-semibold">Emissão de NF-e</span>
+                                </button>
+                            @endif
+
+                            @if ($form->moduloNfc == 'S')
+                                <button class="flex flex-col items-center gap-1 p-2 rounded-lg bg-gray-50">
+                                    <img class="w-26" src="{{ asset('img/nfce.png') }}" alt="">
+
+                                    <span class="text-sm font-semibold">Emissão de NFC-e</span>
+                                </button>
+                            @endif
+                            
+                            @if ($form->moduloNfs == 'S')
+                                <button class="flex flex-col items-center gap-1 p-2 rounded-lg bg-gray-50">
+                                    <img class="w-26" src="{{ asset('img/nfseNN.png') }}" alt="">
+
+                                    <span class="text-sm font-semibold">Emissão de NFS-e</span>
+                                </button>
+                            @endif
+
+                        </div>
+
+                        <x-form.label value="Rica Habilitados" />
+
+                        <div class="mt-2 flex flex-wrap gap-4">
+
+                            @if ($form->ricaApp != 'N')
+                                <button class="flex flex-col items-center gap-1 p-2 rounded-lg bg-gray-50">
+                                    <img class="w-16" src="{{ asset('img/logorica.png') }}" alt="">
+
+                                    <span class="text-sm font-semibold">{{ $form->ricaApp == 'R' ? 'Rica App' : '' }}
+                                        {{ $form->ricaApp == 'F' ? 'RcPedidos' : '' }}
+                                        {{ $form->ricaApp == 'V' ? 'RcPedidos + Rica App' : '' }}</span>
+                                </button>
+                            @endif
+
+                            @if ($form->ricaBackup == 'S')
+                                <button class="flex flex-col items-center gap-1 p-2 rounded-lg bg-gray-50">
+                                    <img class="w-16" src="{{ asset('img/logorica.png') }}" alt="">
+
+                                    <span class="text-sm font-semibold"> Rica Backup</span>
+                                </button>
+                            @endif
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /MODULOS -->
 
             <!-- PROCESSOS MOBILE -->
             <div class="w-full block md:hidden">
@@ -169,9 +228,6 @@
 
         <div class="w-full">
             <div class="sticky top-0 space-y-7 hidden sm:block">
-
-                {{-- <x-title-page title="Pessoa" nome="{{ $form->nome }}" codigo="{{ $form->codigo }}"></x-title-page> --}}
-
                 <!-- NESTA PAGINA -->
                 <div class="text-sm font-semibold bg-white rounded-xl w-full px-5 py-5 shadow-md">
                     <h1 class="text-sm tracking-widest font-semibold uppercase text-gray-400 mb-2">Nesta Página</h1>
@@ -182,25 +238,34 @@
                             <a href="#informacao-cadastro"
                                 class="text-gray-400 hover:text-blue-500 hover:underline underline-offset-4 decoration-2">Informações</a>
                         </li>
+                        <li>
+                            <a href="#contato"
+                                class="text-gray-400 hover:text-blue-500 hover:underline underline-offset-4 decoration-2">Contato</a>
+                        </li>
+                        <li>
+                            <a href="#limites"
+                                class="text-gray-400 hover:text-blue-500 hover:underline underline-offset-4 decoration-2">Limites</a>
+                        </li>
+                        <li>
+                            <a href="#modulos"
+                                class="text-gray-400 hover:text-blue-500 hover:underline underline-offset-4 decoration-2">Modulos</a>
+                        </li>
                     </ol>
                 </div>
                 <!-- NESTA PAGINA -->
 
                 <!-- PROCESSOS -->
-                <div class="h-auto px-5 py-5 bg-white rounded-xl shadow-md">
+                {{-- <div class="h-auto px-5 py-5 bg-white rounded-xl shadow-md">
                     <h1 class="text-sm tracking-widest font-semibold uppercase text-gray-400">
                         Ações
                     </h1>
                     <div class="border border-gray-300 mt-2 mb-6"></div>
 
                     <div class="flex items-center gap-3">
-                        {{-- <x-buttons.primary class="uppercase tracking-widest" color="blue" text="Salvar" light loading
-                            wire:click="update()">
-                            Salvar
-                        </x-buttons.primary> --}}
+                        
                     </div>
 
-                </div>
+                </div> --}}
                 <!-- /PROCESSOS -->
             </div>
 

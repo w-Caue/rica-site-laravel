@@ -33,6 +33,13 @@ class PerfilForm extends Form
 
     public $observacao;
 
+    public $moduloNfe;
+    public $moduloNfs;
+    public $moduloNfc;
+
+    public $ricaBackup;
+    public $ricaApp;
+
     public function setCliente()
     {
         $codRica =  Auth::user()->CODIGO_RCFIN;
@@ -56,5 +63,12 @@ class PerfilForm extends Form
         $this->versaoRcfin = $cliente->VERSAO_SISTEMA;
         $this->dtVencimento = $cliente->VENCIMENTO_BOLETO;
         $this->terminais = $cliente->RICA_TERMINAIS;
+
+        $this->moduloNfe = $cliente->RICA_NFE;
+        $this->moduloNfs = $cliente->RICA_NFS_E;
+        $this->moduloNfc = $cliente->RICA_NFC_E;
+
+        $this->ricaBackup = $cliente->RICA_BACKUP;
+        $this->ricaApp = $cliente->RICA_DEMANDER;
     }
 }
