@@ -18,7 +18,8 @@
 
             <div>
                 @hasSection('titulo')
-                    <h1 class="text-lg uppercase tracking-widest font-bold text-blue-500">{{ Auth::user()->NOME }}</h1>
+                    <h1 class="text-lg uppercase tracking-widest font-bold text-blue-500">{{ Auth::user()->FANTASIA }}
+                    </h1>
                     <span class="text-sm uppercase tracking-widest font-bold text-orange-500">@yield('titulo')</span>
                 @endif
             </div>
@@ -132,7 +133,7 @@
                         <li>
                             <div class="uppercase tracking-widest">
                                 <span class="text-xs text-gray-400">Acessando como:</span>
-                                <h1 class="text-xs">{{ auth()->user()->NOME ?? '' }}</h1>
+                                <h1 class="text-xs">{{ auth()->user()->FANTASIA ?? '' }}</h1>
                             </div>
                         </li>
 

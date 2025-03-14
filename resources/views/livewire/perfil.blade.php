@@ -1,5 +1,5 @@
 <div>
-    @section('titulo', 'Seu cadastro')
+    @section('titulo', 'Cadastro Rica')
 
     <div class="relative grid gap-4 md:grid-cols-5">
         <div class="col-span-4 space-y-7">
@@ -24,7 +24,7 @@
                                 @enderror
                             </div>
 
-                            <div class="w-72">
+                            <div class=" w-56">
                                 <x-form.label value="Cnpj" />
                                 <x-form.input wire:model="form.cnpj" placeholder="00.000.000/0000-00"
                                     x-mask:dynamic="
@@ -166,7 +166,7 @@
                                     <span class="text-sm font-semibold">Emissão de NFC-e</span>
                                 </button>
                             @endif
-                            
+
                             @if ($form->moduloNfs == 'S')
                                 <button class="flex flex-col items-center gap-1 p-2 rounded-lg bg-gray-50">
                                     <img class="w-26" src="{{ asset('img/nfseNN.png') }}" alt="">
