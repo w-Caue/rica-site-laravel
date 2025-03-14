@@ -15,8 +15,9 @@
 
             <img aria-hidden="true" class="w-10 rounded" src="{{ asset('img/logo.jpeg') }}" alt="Rica Informática" />
 
-            <span class="text-gray-400 font-black " x-bind:class="sidebar.full ? '' : 'hidden'">
-                Rica Informática
+            <span class="font-black uppercase text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-orange-600"
+                x-bind:class="sidebar.full ? '' : 'hidden'">
+                Rica Web
             </span>
         </div>
         <div class="relative mt-4 space-y-4 text-xs uppercase font-bold">
@@ -54,7 +55,25 @@
                     <h1 x-clock
                         x-bind:class="!sidebar.full && tooltip.show ? visibleClass : '' || !sidebar.full && !tooltip.show ?
                             'sm:hidden' : ''">
-                        Meu Cadastro
+                        Cadastro
+                    </h1>
+                </div>
+            </a>
+
+            {{-- TICKET --}}
+            <a href="{{ route('rica.perfil') }}"
+                class="relative flex justify-between items-center space-x-2 p-2 cursor-pointer {{ request()->routeIs('rica.perfil') ? 'text-blue-500 border-l-2 border-blue-500 ' : 'text-gray-400 hover:text-blue-500' }}"
+                x-bind:class="{
+                    'justify-start': sidebar.full,
+                    'sm:justify-center': !sidebar.full,
+                }">
+                <div class="flex items-center space-x-2">
+                    <x-icons.ticket class="size-6" />
+
+                    <h1 x-clock
+                        x-bind:class="!sidebar.full && tooltip.show ? visibleClass : '' || !sidebar.full && !tooltip.show ?
+                            'sm:hidden' : ''">
+                        Ticket's
                     </h1>
                 </div>
             </a>
@@ -67,7 +86,7 @@
 <!-- Mobile -->
 <div x-cloak class="flex justify-between ">
 
-    <div class="fixed z-50 flex-shrink-0 space-y-2 mx-4 my-4 p-2 h-full rounded-lg transition-all duration-300 bg-white sm:hidden dark:bg-gray-800"
+    <div class="fixed z-50 flex-shrink-0 space-y-2 mx-4 my-4 p-2 h-full rounded-lg transition-all duration-300 bg-white sm:hidden"
         x-bind:class="{
             'top-0 left-0 w-72': sidebar
                 .navOpen,
@@ -77,12 +96,12 @@
         <div class="flex items-center justify-between gap-2">
             <img class="w-10 rounded" src="{{ asset('img/logo.jpeg') }}" alt="logo empresa">
 
-            <span class="text-blue-500 font-black text-sm dark:text-white">
-                Rica Informática
+            <span class="font-black uppercase text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-orange-600">
+                Rica Web
             </span>
 
             <button x-on:click="sidebar.navOpen = !sidebar.navOpen"
-                class="block lg:hidden focus:outline-none dark:text-white">
+                class="block lg:hidden focus:outline-none">
                 <!-- Close Icon -->
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-6" x-bind:class="sidebar.navOpen ? '' : 'hidden'">
@@ -93,11 +112,11 @@
 
         <div class="relative mt-4 space-y-4 text-xs uppercase font-bold">
 
-            <div class="border dark:border-gray-700"></div>
+            <div class="border border-gray-300"></div>
 
             {{-- HOME --}}
             <a href="{{ route('rica.dashboard') }}"
-                class="relative flex justify-between items-center space-x-2 p-2 cursor-pointer {{ request()->routeIs('tenant.dashboard') ? 'text-blue-500 border-l-2 border-blue-500 ' : 'text-gray-400 hover:text-blue-500' }}"
+                class="relative flex justify-between items-center space-x-2 p-2 cursor-pointer {{ request()->routeIs('rica.dashboard') ? 'text-blue-500 border-l-2 border-blue-500 ' : 'text-gray-400 hover:text-blue-500' }}"
                 x-bind:class="{
                     'justify-start': sidebar.full,
                     'sm:justify-center': !sidebar.full,
@@ -115,7 +134,7 @@
 
             {{-- PERFIL --}}
             <a href="{{ route('rica.perfil') }}"
-                class="relative flex justify-between items-center space-x-2 p-2 cursor-pointer {{ request()->routeIs('tenant.dashboard') ? 'text-blue-500 border-l-2 border-blue-500 ' : 'text-gray-400 hover:text-blue-500' }}"
+                class="relative flex justify-between items-center space-x-2 p-2 cursor-pointer {{ request()->routeIs('rica.perfil') ? 'text-blue-500 border-l-2 border-blue-500 ' : 'text-gray-400 hover:text-blue-500' }}"
                 x-bind:class="{
                     'justify-start': sidebar.full,
                     'sm:justify-center': !sidebar.full,
@@ -131,7 +150,7 @@
                 </div>
             </a>
 
-            <div class="border dark:border-gray-700"></div>
+            <div class="border border-gray-300"></div>
 
         </div>
     </div>

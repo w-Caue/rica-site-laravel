@@ -87,7 +87,7 @@
                             <div>
                                 <a href=""
                                     class="flex items-center gap-2 w-44 text-white bg-orange-500 rounded-lg p-2 transition-all hover:scale-95">
-                                    <x-icons.ticket />
+                                    <x-icons.ticket class="size-6"/>
 
                                     <span class="text-xs uppercase tracking-widest font-bold">Criar Ticket</span>
                                 </a>
