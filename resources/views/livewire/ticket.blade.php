@@ -55,15 +55,15 @@
                                 <th class="px-4 py-3">
                                     <div class="flex justify-center">
                                         <div class="flex justify-center gap-1 items-center cursor-pointer"
-                                            wire:click="sortBy('CODIGO')" x-on:mouseover="tooltip = 'ticket'"
+                                            wire:click="sortBy('ID')" x-on:mouseover="tooltip = 'ticket'"
                                             x-on:mouseleave="tooltip = 'nenhum'">
                                             @include('includes.icon-search', [
-                                                'field' => 'CODIGO',
+                                                'field' => 'ID',
                                             ])
                                             <button
                                                 class="text-xs font-medium leading-4 tracking-wider uppercase">Código</button>
                                             @include('includes.icon-filter', [
-                                                'field' => 'CODIGO',
+                                                'field' => 'ID',
                                             ])
                                         </div>
 
@@ -78,15 +78,15 @@
                                 <th class="px-4 py-3">
                                     <div class="flex justify-center">
                                         <div class="flex justify-center gap-1 items-center cursor-pointer"
-                                            wire:click="sortBy('NOME')" x-on:mouseover="tooltip = 'assunto'"
+                                            wire:click="sortBy('ASSUNTO')" x-on:mouseover="tooltip = 'assunto'"
                                             x-on:mouseleave="tooltip = 'nenhum'">
                                             @include('includes.icon-search', [
-                                                'field' => 'NOME',
+                                                'field' => 'ASSUNTO',
                                             ])
                                             <button
                                                 class="text-xs font-medium leading-4 tracking-wider uppercase">assunto</button>
                                             @include('includes.icon-filter', [
-                                                'field' => 'NOME',
+                                                'field' => 'ASSUNTO',
                                             ])
                                         </div>
 
@@ -101,15 +101,15 @@
                                 <th class="px-4 py-3">
                                     <div class="flex justify-center">
                                         <div class="flex justify-center gap-1 items-center cursor-pointer"
-                                            wire:click="sortBy('FANTASIA')" x-on:mouseover="tooltip = 'usuario'"
+                                            wire:click="sortBy('CLIENTE_USUARIO')" x-on:mouseover="tooltip = 'usuario'"
                                             x-on:mouseleave="tooltip = 'nenhum'">
                                             @include('includes.icon-search', [
-                                                'field' => 'FANTASIA',
+                                                'field' => 'CLIENTE_USUARIO',
                                             ])
                                             <button
                                                 class="text-xs font-medium leading-4 tracking-wider uppercase">Criador</button>
                                             @include('includes.icon-filter', [
-                                                'field' => 'FANTASIA',
+                                                'field' => 'CLIENTE_USUARIO',
                                             ])
                                         </div>
 
@@ -124,15 +124,15 @@
                                 <th class="px-4 py-3">
                                     <div class="flex justify-center">
                                         <div class="flex justify-center gap-1 items-center cursor-pointer"
-                                            wire:click="sortBy('FANTASIA')" x-on:mouseover="tooltip = 'dt_criacao'"
+                                            wire:click="sortBy('DATA_CRIACAO')" x-on:mouseover="tooltip = 'dt_criacao'"
                                             x-on:mouseleave="tooltip = 'nenhum'">
                                             @include('includes.icon-search', [
-                                                'field' => 'FANTASIA',
+                                                'field' => 'DATA_CRIACAO',
                                             ])
                                             <button class="text-xs font-medium leading-4 tracking-wider uppercase">Dt.
                                                 Criação</button>
                                             @include('includes.icon-filter', [
-                                                'field' => 'FANTASIA',
+                                                'field' => 'DATA_CRIACAO',
                                             ])
                                         </div>
 
@@ -172,8 +172,8 @@
                         <tbody class="bg-white divide-y divide-gray-200">
                             @forelse ($tickets as $cliente)
                                 <tr wire:key="{{ $cliente->ID }}" class="font-semibold text-sm ">
-                                    <td class="py-3 text-center text-blue-500">
-                                        #{{ $cliente->ID }}
+                                    <td class="py-3 text-center ">
+                                        {{ $cliente->ID }}
                                     </td>
 
                                     <td class="py-3 flex justify-center items-center">
@@ -189,7 +189,7 @@
                                     </td>
 
                                     <td class="py-3 text-center">
-                                        {{ $cliente->BAIRRO }}
+                                        {{-- {{ $cliente->BAIRRO }} --}}
                                     </td>
                                 </tr>
                             @empty
