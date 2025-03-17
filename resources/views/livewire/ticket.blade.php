@@ -1,6 +1,10 @@
 <div>
     @section('titulo', 'Tickets')
 
+    <!-- Loading -->
+    @include('includes.loading')
+    <!-- ./Loading -->
+
     <div id="informacao-cadastro" class="w-full">
         <div class="h-auto px-5 py-5 bg-white rounded-xl shadow-md">
             <h1 class="text-sm tracking-widest font-semibold uppercase text-gray-400">
@@ -36,7 +40,7 @@
                         <x-form.label value="Status" />
 
                         <x-form.select wire:model.live="filterStatus">
-                            <option value="">Selecione</option>
+                            <option value="">Todos</option>
                             <option value="A">Aberto</option>
                             <option value="P">Pendente</option>
                             <option value="D">Em Densenvolvimento</option>
@@ -46,8 +50,6 @@
                 </div>
 
             </div>
-
-            <div class="border my-4 mx-32 border-gray-200"></div>
 
             <div class="w-full overflow-hidden hidden lg:block">
                 <div class="w-full overflow-x-auto rounded-xl">
@@ -153,7 +155,7 @@
                                     wire:click="$dispatchTo('ticket-detalhe','dados', { codigo: {{ $ticket->ID }}})"
                                     class="font-semibold text-sm hover:text-orange-500 hover:cursor-pointer hover:bg-gray-50">
                                     <td class="py-4 text-center ">
-                                        {{ $ticket->ID }}
+                                        #{{ $ticket->ID }}
                                     </td>
 
                                     <td class="py-4 flex justify-center items-center">
@@ -271,6 +273,14 @@
                 @endforeach
             </div>
             <!--./CARD -->
+
+            <div class="border my-4 mx-32 border-gray-200"></div>
+
+            <div class="flex justify-between gap-2 items-center mx-4 my-2 py-1">
+                @include('includes.porPagina')
+
+                {{ $tickets->onEachSide(1)->links('components.pagination', ['is_livewire' => true]) }}
+            </div>
         </div>
     </div>
 

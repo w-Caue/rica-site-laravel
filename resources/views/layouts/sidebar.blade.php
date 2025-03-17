@@ -17,7 +17,7 @@
 
             <span class="font-black uppercase text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-orange-600"
                 x-bind:class="sidebar.full ? '' : 'hidden'">
-                Rica Web
+                Rica Cliente
             </span>
         </div>
         <div class="relative mt-4 space-y-4 text-xs uppercase font-bold">
@@ -98,7 +98,7 @@
 
             <span
                 class="font-black uppercase text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-orange-600">
-                Rica Web
+                Rica Cliente
             </span>
 
             <button x-on:click="sidebar.navOpen = !sidebar.navOpen" class="block lg:hidden focus:outline-none">
@@ -145,7 +145,7 @@
                     <h1 x-clock
                         x-bind:class="!sidebar.full && tooltip.show ? visibleClass : '' || !sidebar.full && !tooltip.show ?
                             'sm:hidden' : ''">
-                        Perfil
+                        Cadastro
                     </h1>
                 </div>
             </a>
@@ -158,12 +158,12 @@
                     'sm:justify-center': !sidebar.full,
                 }">
                 <div class="flex items-center space-x-2">
-                    <x-icons.user class="size-6" />
+                    <x-icons.ticket class="size-6" />
 
                     <h1 x-clock
                         x-bind:class="!sidebar.full && tooltip.show ? visibleClass : '' || !sidebar.full && !tooltip.show ?
                             'sm:hidden' : ''">
-                        Ticket
+                        Ticket's
                     </h1>
                 </div>
             </a>

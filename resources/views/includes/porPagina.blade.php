@@ -1,5 +1,5 @@
 <div class="flex flex-row text-md ">
-    <select wire:model.live="porPagina" class=" border-white bg-white text-center rounded dark:text-white dark:bg-gray-800 dark:border-gray-800">
+    <select wire:model.live="porPagina" class=" border border-gray-200 p-1 bg-white text-center rounded">
         <option>5</option>
         <option>10</option>
         <option>25</option>

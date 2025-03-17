@@ -17,7 +17,11 @@ class Ticket extends Component
 
     public $search;
 
-    public $filterStatus;
+    public $filterStatus = 'A';
+
+    public $porPagina = '5';
+
+    public $readyToLoad = false;
 
     public function sortBy($field)
     {
@@ -27,6 +31,11 @@ class Ticket extends Component
             $this->sortAsc = true;
         }
         $this->sortField = $field;
+    }
+
+    public function load()
+    {
+        $this->readyToLoad = true;
     }
 
     public function dados()
@@ -49,7 +58,7 @@ class Ticket extends Component
 
             ->orderBy($this->sortField, $this->sortAsc ? 'DESC' : 'ASC')
 
-            ->paginate(5);
+            ->paginate($this->porPagina);
 
         return $tickets;
     }
