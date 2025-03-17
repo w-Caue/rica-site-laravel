@@ -22,7 +22,9 @@
                                     wire:model.blur="search" wire:keydown.enter='dados()' />
                             </div>
 
-                            <button class=" text-gray-600 bg-blue-200 rounded-md p-2 transition-all hover:scale-95 hover:cursor-pointer focus:outline-blue-600" wire:click="dados()">
+                            <button
+                                class=" text-gray-600 bg-blue-200 rounded-md p-2 transition-all hover:scale-95 hover:cursor-pointer focus:outline-blue-600"
+                                wire:click="dados()">
                                 <x-icons.search class="size-5" />
                             </button>
                         </div>
@@ -146,7 +148,10 @@
 
                         <tbody class="bg-white divide-y divide-gray-100">
                             @forelse ($tickets as $ticket)
-                                <tr wire:key="{{ $ticket->ID }}" class="font-semibold text-sm hover:text-orange-500 hover:cursor-pointer hover:bg-gray-50">
+                                <tr wire:key="{{ $ticket->ID }}" x-data
+                                    x-on:click="$dispatch('open-modal-main', { name : 'clientes' })"
+                                    wire:click="$dispatchTo('ticket-detalhe','dados', { codigo: {{ $ticket->ID }}})"
+                                    class="font-semibold text-sm hover:text-orange-500 hover:cursor-pointer hover:bg-gray-50">
                                     <td class="py-4 text-center ">
                                         {{ $ticket->ID }}
                                     </td>
@@ -227,7 +232,9 @@
             <div class="flex flex-col gap-4 mt-4 p-3 lg:hidden">
                 @foreach ($tickets as $ticket)
                     <div wire:key="{{ $ticket->ID }}"
-                        class="p-2 space-y-0 rounded-xl border border-gray-300 transition-all hover:scale-95">
+                        x-on:click="$dispatch('open-modal-main', { name : 'clientes' })"
+                        wire:click="$dispatchTo('ticket-detalhe','dados', { codigo: {{ $ticket->ID }}})"
+                        class="p-2 space-y-0 rounded-xl border border-gray-300 transition-all hover:scale-95 hover:cursor-pointer">
 
                         <div class="space-y-1 w-full text-xs">
                             <div class="flex justify-between items-center">
@@ -266,4 +273,6 @@
             <!--./CARD -->
         </div>
     </div>
+
+    @livewire('ticket-detalhe')
 </div>
