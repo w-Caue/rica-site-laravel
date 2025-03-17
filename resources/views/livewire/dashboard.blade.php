@@ -6,7 +6,7 @@
         <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4" wfd-id="87">
 
             <!-- Card -->
-            <a title="Total de clientes que você tem acesso">
+            <a href="{{ route('rica.ticket') }}" title="Total de clientes que você tem acesso">
                 <x-card.icon-card title="ticket's" subtitle="Visualize seus ticket's">
                     <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full">
                         <x-icons.ticket class="size-6" />
