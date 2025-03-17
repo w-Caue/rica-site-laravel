@@ -12,8 +12,12 @@ class Ticket extends Component
 {
     use WithPagination;
 
-    public $sortField = 'CODIGO';
+    public $sortField = 'ID';
     public $sortAsc = true;
+
+    public $search;
+
+    public $filterStatus;
 
     public function sortBy($field)
     {
@@ -29,10 +33,24 @@ class Ticket extends Component
     {
         $codRica =  Auth::user()->CODIGO_RCFIN;
 
-        $tickets = ModelsTicket::where('CLIENTE_CODIGO', $codRica)->paginate(5);
+        $tickets = ModelsTicket::where('CLIENTE_CODIGO', $codRica)
+            ->where('TIPO', 'K')
 
-        // dd($tickets);
-        
+            // Pesquisas da tabela
+            ->when(!empty($this->search), function ($query) {
+                $string = strtoupper($this->search);
+                $string  = str_replace(" ", "%", $string);
+                return $query->where($this->sortField, 'LIKE', "%$string%");
+            })
+
+            ->when($this->filterStatus, function ($query) {
+                return $query->where('STATUS', $this->filterStatus);
+            })
+
+            ->orderBy($this->sortField, $this->sortAsc ? 'DESC' : 'ASC')
+
+            ->paginate(5);
+
         return $tickets;
     }
 
