@@ -28,7 +28,6 @@
 
     <div class="relative grid gap-4 md:grid-cols-5">
         <div class="col-span-2 space-y-7">
-            <!-- CADASTRO -->
             <div id="informacao-cadastro" class="w-full">
                 <div class="h-auto px-5 py-5 bg-white rounded-xl shadow-md">
                     <h1 class="text-sm tracking-widest font-semibold uppercase text-gray-400">
@@ -36,53 +35,49 @@
                     </h1>
                     <div class="border border-gray-300 mt-2 mb-6"></div>
 
-                    {{-- <div class="space-y-6">
-                        <div class="w-full flex flex-col flex-wrap sm:flex-row gap-4">
-                            <div class="">
-                                <x-form.label value="Cód" />
-                                <div class="w-22">
-                                    <x-form.input id="codigo" wire:model="form.codrcfin" disabled />
+                    <!-- CARD -->
+                    <div class="flex flex-col gap-4 mt-4 p-3">
+                        {{-- @foreach ($ticket as $ticket) --}}
+                        <div wire:key="{{ $ticket->ID }}"
+                            class="p-2 space-y-0 rounded-xl border border-gray-300 transition-all hover:scale-95">
+
+                            <div class="space-y-1 w-full text-xs">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-xs">{{ $ticket->ID }}</span>
+
+                                    <h1 class="font-bold text-xs uppercase text-gray-500">
+                                        {{ $ticket->CLIENTE_USUARIO }}
+                                    </h1>
                                 </div>
 
-                                @error('codrcfin')
-                                    <span class="font-semibold text-red-600 error">{{ $message }}</span>
-                                @enderror
-                            </div>
+                                <div class="font-bold text-xs uppercase">
+                                    {{ $ticket->ASSUNTO }}
+                                </div>
 
-                            <div class=" w-56">
-                                <x-form.label value="Cnpj" />
-                                <x-form.input wire:model="form.cnpj" placeholder="00.000.000/0000-00"
-                                    x-mask:dynamic="
-                                $input.startsWith('18') ? '99.999.999/9999-99' : '99.999.999/9999-99'"
-                                    disabled />
+                                <div class="flex justify-between items-center flex-wrap font-semibold">
+                                    <div class="text-xs uppercase ">
+                                        {{ $ticket->DATA_CRIACAO }}
+                                    </div>
 
-                                @error('cnpj')
-                                    <span class="font-semibold text-red-600 error">{{ $message }}</span>
-                                @enderror
-                            </div>
+                                    <button
+                                        class="p-2 rounded-full text-xs uppercase {{ $ticket->STATUS == 'A' ? 'text-blue-500 bg-blue-200' : '' }} 
+                                            {{ $ticket->STATUS == 'D' ? 'text-green-500 bg-green-200' : '' }} 
+                                            {{ $ticket->STATUS == 'C' ? 'text-purple-500 bg-purple-200' : '' }}
+                                            {{ $ticket->STATUS == 'P' ? 'text-orange-500 bg-orange-200' : '' }}">
+                                        {{ $ticket->STATUS == 'A' ? 'Aberto' : '' }}
+                                        {{ $ticket->STATUS == 'D' ? 'Desenvolvimento' : '' }}
+                                        {{ $ticket->STATUS == 'C' ? 'Concluido' : '' }}
+                                        {{ $ticket->STATUS == 'P' ? 'Pendente' : '' }}
+                                    </button>
+                                </div>
 
-                            <div class="w-full">
-                                <x-form.label value="Razão Social" />
-                                <x-form.input id="razao" wire:model="form.razao" disabled />
-
-                                @error('razao')
-                                    <span class="font-semibold text-red-600 error">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div class="w-full">
-                                <x-form.label value="Fantasia" />
-                                <x-form.input id="fantasia" wire:model="form.fantasia" disabled />
-
-                                @error('fantasia')
-                                    <span class="font-semibold text-red-600 error">{{ $message }}</span>
-                                @enderror
                             </div>
                         </div>
-                    </div> --}}
+                        {{-- @endforeach --}}
+                    </div>
+                    <!--./CARD -->
                 </div>
             </div>
-            <!-- /CADASTRO -->
 
         </div>
 
