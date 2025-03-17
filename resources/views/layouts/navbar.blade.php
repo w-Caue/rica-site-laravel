@@ -35,7 +35,7 @@
             <!-- news -->
             <li x-title="NavBar:dropdownSuporte" x-data="{ news: false }" class="relative hidden sm:block"
                 wfd-id="105">
-                <button class="flex items-center gap-2 text-blue-500" x-on:click="news = !news;"
+                <button class="flex items-center gap-2 text-blue-500 hover:cursor-pointer" x-on:click="news = !news;"
                     @keydown.escape="news = false" @click.away="news = false;" aria-label="Account" aria-haspopup="true"
                     wfd-id="146">
 
@@ -63,9 +63,9 @@
                         <div>
                             <span class="text-xs uppercase font-bold">Tire sua dúvida</span>
 
-                            <div>
+                            <div class="w-56">
                                 <a href="https://api.whatsapp.com/send?phone=558532235533&text=" target="_blank"
-                                    class="flex items-center gap-2 w-44 text-blue-400 p-2 hover:underline underline-offset-4 decoration-2 transition-all">
+                                    class="flex items-center gap-2 text-blue-400 p-2 hover:underline underline-offset-4 decoration-2 transition-all">
                                     <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                         fill="currentColor">
                                         <path
@@ -78,22 +78,6 @@
 
                             </div>
                         </div>
-
-                        <div class="border h-20 mx-6 border-gray-200"></div>
-
-                        <div class="w-56">
-                            <span class="text-xs uppercase font-bold">Faça uma solicitação</span>
-
-                            <div>
-                                <a href=""
-                                    class="flex items-center gap-2 w-44 text-white bg-orange-500 rounded-lg p-2 transition-all hover:scale-95">
-                                    <x-icons.ticket class="size-6"/>
-
-                                    <span class="text-xs uppercase tracking-widest font-bold">Criar Ticket</span>
-                                </a>
-
-                            </div>
-                        </div>
                     </div>
                 </template>
             </li>
@@ -101,7 +85,7 @@
 
             <!-- Profile menu -->
             <li x-title="NavBar:ProfileMenu" x-data="{ isProfileMenuOpen: false }" class="relative" wfd-id="105">
-                <button class="flex items-center gap-3 text-blue-500"
+                <button class="flex items-center gap-3 text-blue-500 hover:cursor-pointer"
                     x-on:click="isProfileMenuOpen = !isProfileMenuOpen;" @keydown.escape="isProfileMenuOpen = false"
                     @click.away="isProfileMenuOpen = false;" aria-label="Account" aria-haspopup="true" wfd-id="146">
 
