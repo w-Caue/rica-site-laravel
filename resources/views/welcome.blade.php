@@ -128,7 +128,6 @@
 
                 <img id="imagemLogo" class="hidden lg:block relative max-w-xl z-50" src="{{ asset('img/sistema.svg') }}"
                     alt="">
-                    
             </div>
 
         </main>
