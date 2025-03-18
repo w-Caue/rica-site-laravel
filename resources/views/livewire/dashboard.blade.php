@@ -86,5 +86,5 @@
         </div>
     </div>
 
-    @livewire('ticket-detalhe')
+    @livewire('ticket.ticket-detalhe')
 </div>
