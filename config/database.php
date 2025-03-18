@@ -61,6 +61,17 @@ return [
             'prefix' => '',
         ],
 
+        'rcfin' => [
+            'driver'   => 'firebird',
+            'host'     => '45.168.41.55',
+            'port'     => 5310,
+            'database' => 'D:\databases\RICA\DADOS.FDB',
+            'username' => 'sysdba',
+            'password' => 'masterkey',
+            'charset'  => env('DB_CHARSET', 'UTF8'),
+            'role'     => null,
+        ],
+
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DB_URL'),

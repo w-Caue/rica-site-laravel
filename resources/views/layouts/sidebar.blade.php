@@ -78,6 +78,23 @@
                 </div>
             </a>
 
+            <a href="{{ route('rica.contas') }}"
+                class="relative flex justify-between items-center space-x-2 p-2 cursor-pointer {{ request()->routeIs('rica.contas') ? 'text-blue-500 border-l-2 border-blue-500 ' : 'text-gray-400 hover:text-blue-500' }}"
+                x-bind:class="{
+                    'justify-start': sidebar.full,
+                    'sm:justify-center': !sidebar.full,
+                }">
+                <div class="flex items-center space-x-2">
+                    <x-icons.tickets class="size-6" />
+
+                    <h1 x-clock
+                        x-bind:class="!sidebar.full && tooltip.show ? visibleClass : '' || !sidebar.full && !tooltip.show ?
+                            'sm:hidden' : ''">
+                        Contas
+                    </h1>
+                </div>
+            </a>
+
             <div class="border border-gray-200"></div>
         </div>
     </div>

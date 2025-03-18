@@ -2,6 +2,7 @@
 
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
+use App\Livewire\Contas\ContasList;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Dashboard;
 use App\Livewire\Perfil;
@@ -30,4 +31,7 @@ Route::middleware('auth')->prefix('rica')->name('rica.')->group(function () {
 
     Route::get('/ticket', Ticket::class)
         ->name('ticket');
+
+    Route::get('/contas', ContasList::class)
+        ->name('contas');
 });
