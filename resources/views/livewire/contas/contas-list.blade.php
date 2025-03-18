@@ -187,7 +187,7 @@
                                                     aria-label="submenu">
 
                                                     <li class="flex">
-                                                        <a href="" target=”_blank”
+                                                        <a href="http://54.94.202.117/api/util/v1/1/boleto/{{ $conta->COD_SEQ }}" target=”_blank”
                                                             class="inline-flex items-center w-full px-2 py-1 text-xs font-semibold uppercase transition-colors duration-150 rounded-md hover:bg-green-200 hover:text-gray-800">
                                                             <svg class="size-5 mr-2" xmlns="http://www.w3.org/2000/svg"
                                                                 viewBox="0 0 24 24" fill="currentColor">
