@@ -41,10 +41,8 @@
 
                         <x-form.select wire:model.live="filterStatus">
                             <option value="">Todos</option>
-                            <option value="A">Aberto</option>
-                            <option value="P">Pendente</option>
-                            <option value="D">Em Densenvolvimento</option>
-                            <option value="C">Concluido</option>
+                            <option value="A">Pagos</option>
+                            <option value="P">Não Pagos</option>
                         </x-form.select>
                     </div>
                 </div>
@@ -60,22 +58,22 @@
                                 <th class="px-4 py-3">
                                     <div class="flex justify-center">
                                         <div class="flex justify-center gap-1 items-center cursor-pointer"
-                                            wire:click="sortBy('ID')" x-on:mouseover="tooltip = 'ticket'"
+                                            wire:click="sortBy('N_DOCUMENTO')" x-on:mouseover="tooltip = 'N_DOCUMENTO'"
                                             x-on:mouseleave="tooltip = 'nenhum'">
                                             @include('includes.icon-search', [
-                                                'field' => 'ID',
+                                                'field' => 'N_DOCUMENTO',
                                             ])
-                                            <button
-                                                class="text-xs font-medium leading-4 tracking-wider uppercase">ID</button>
+                                            <button class="text-xs font-medium leading-4 tracking-wider uppercase">N°
+                                                Doc</button>
                                             @include('includes.icon-filter', [
-                                                'field' => 'ID',
+                                                'field' => 'N_DOCUMENTO',
                                             ])
                                         </div>
 
-                                        <div x-cloak x-show="tooltip === 'ticket'" x-transition
+                                        <div x-cloak x-show="tooltip === 'N_DOCUMENTO'" x-transition
                                             x-transition.duration.300ms
                                             class="absolute z-10 p-2 mt-6 text-xs text-blue-500 font-bold bg-gray-50 border border-gray-200 rounded-xl">
-                                            <p>Ordenar pelo o Código</p>
+                                            <p>Ordenar pelo o N° Doc</p>
                                         </div>
                                     </div>
                                 </th>
@@ -83,22 +81,22 @@
                                 <th class="px-4 py-3">
                                     <div class="flex justify-center">
                                         <div class="flex justify-center gap-1 items-center cursor-pointer"
-                                            wire:click="sortBy('ASSUNTO')" x-on:mouseover="tooltip = 'assunto'"
+                                            wire:click="sortBy('HISTORICO')" x-on:mouseover="tooltip = 'HISTORICO'"
                                             x-on:mouseleave="tooltip = 'nenhum'">
                                             @include('includes.icon-search', [
-                                                'field' => 'ASSUNTO',
+                                                'field' => 'HISTORICO',
                                             ])
                                             <button
-                                                class="text-xs font-medium leading-4 tracking-wider uppercase">assunto</button>
+                                                class="text-xs font-medium leading-4 tracking-wider uppercase">Histórico</button>
                                             @include('includes.icon-filter', [
-                                                'field' => 'ASSUNTO',
+                                                'field' => 'HISTORICO',
                                             ])
                                         </div>
 
                                         <div x-cloak x-show="tooltip === 'assunto'" x-transition
                                             x-transition.duration.300ms
                                             class="absolute z-10 p-2 mt-6 text-xs text-blue-500 font-bold bg-gray-50 border border-gray-200 rounded-xl">
-                                            <p>Ordenar pelo o Assunto</p>
+                                            <p>Ordenar pelo o Cliente</p>
                                         </div>
                                     </div>
                                 </th>
@@ -106,22 +104,23 @@
                                 <th class="px-4 py-3">
                                     <div class="flex justify-center">
                                         <div class="flex justify-center gap-1 items-center cursor-pointer"
-                                            wire:click="sortBy('CLIENTE_USUARIO')" x-on:mouseover="tooltip = 'usuario'"
+                                            wire:click="sortBy('DT_VENCIMENTO')"
+                                            x-on:mouseover="tooltip = 'DT_VENCIMENTO'"
                                             x-on:mouseleave="tooltip = 'nenhum'">
                                             @include('includes.icon-search', [
-                                                'field' => 'CLIENTE_USUARIO',
+                                                'field' => 'DT_VENCIMENTO',
                                             ])
-                                            <button
-                                                class="text-xs font-medium leading-4 tracking-wider uppercase">Criador</button>
+                                            <button class="text-xs font-medium leading-4 tracking-wider uppercase">Data
+                                                Venc</button>
                                             @include('includes.icon-filter', [
-                                                'field' => 'CLIENTE_USUARIO',
+                                                'field' => 'DT_VENCIMENTO',
                                             ])
                                         </div>
 
-                                        <div x-cloak x-show="tooltip === 'usuario'" x-transition
+                                        <div x-cloak x-show="tooltip === 'DT_VENCIMENTO'" x-transition
                                             x-transition.duration.300ms
                                             class="absolute z-10 p-2 mt-6 text-xs text-blue-500 font-bold bg-gray-50 border border-gray-200 rounded-xl">
-                                            <p>Ordenar pelo o Criador</p>
+                                            <p>Ordenar pelo o Data Venc</p>
                                         </div>
                                     </div>
                                 </th>
@@ -130,7 +129,7 @@
                                     <div class="flex justify-center">
                                         <div class="flex justify-center gap-1 items-center cursor-pointer">
                                             <button class="text-xs font-medium leading-4 tracking-wider uppercase">
-                                                Dt. Criação
+                                                Valor Doc
                                             </button>
                                         </div>
                                     </div>
@@ -148,39 +147,30 @@
                             </tr>
                         </thead>
 
+
+
                         <tbody class="bg-white divide-y divide-gray-100">
-                            {{-- @forelse ($tickets as $ticket)
-                                <tr wire:key="{{ $ticket->ID }}" x-data
-                                    x-on:click="$dispatch('open-modal-main', { name : 'clientes' })"
-                                    wire:click="$dispatchTo('ticket-detalhe','dados', { codigo: {{ $ticket->ID }}})"
+                            @forelse ($contas as $ticket)
+                                <tr wire:key="{{ $ticket->COD_SEQ }}" x-data
                                     class="font-semibold text-sm hover:text-orange-500 hover:cursor-pointer hover:bg-gray-50">
                                     <td class="py-4 text-center ">
-                                        #{{ $ticket->ID }}
+                                        #{{ $ticket->N_DOCUMENTO }}
                                     </td>
 
                                     <td class="py-4 flex justify-center items-center">
-                                        {{ convert($ticket->ASSUNTO) }}
+                                        {{ convert($ticket->HISTORICO) }}
                                     </td>
 
                                     <td class="py-4 text-center">
-                                        {{ convert($ticket->CLIENTE_USUARIO) }}
+                                        {{ formataData($ticket->DT_VENCIMENTO) }}
                                     </td>
 
                                     <td class="py-4 text-xs tracking-wider text-center">
-                                        {{ formataData($ticket->DATA_CRIACAO) }}
+                                        {{ $ticket->VL_DOCUMENTO }}
                                     </td>
 
                                     <td class="py-4 text-center">
-                                        <button
-                                            class="p-2 rounded-full text-xs uppercase {{ $ticket->STATUS == 'A' ? 'text-blue-500 bg-blue-200' : '' }} 
-                                            {{ $ticket->STATUS == 'D' ? 'text-green-500 bg-green-200' : '' }} 
-                                            {{ $ticket->STATUS == 'C' ? 'text-purple-500 bg-purple-200' : '' }}
-                                            {{ $ticket->STATUS == 'P' ? 'text-orange-500 bg-orange-200' : '' }}">
-                                            {{ $ticket->STATUS == 'A' ? 'Aberto' : '' }}
-                                            {{ $ticket->STATUS == 'D' ? 'Desenvolvimento' : '' }}
-                                            {{ $ticket->STATUS == 'C' ? 'Concluido' : '' }}
-                                            {{ $ticket->STATUS == 'P' ? 'Pendente' : '' }}
-                                        </button>
+
                                     </td>
                                 </tr>
                             @empty
@@ -190,7 +180,7 @@
                                         Sem registros
                                     </h1>
                                 </div>
-                            @endforelse --}}
+                            @endforelse
                         </tbody>
                     </table>
                 </div>

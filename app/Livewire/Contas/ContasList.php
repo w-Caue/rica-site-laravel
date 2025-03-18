@@ -48,6 +48,7 @@ class ContasList extends Component
             'CRC_CP.DT_VENCIMENTO',
             'CRC_CP.VL_DOCUMENTO',
             'CRC_CP.N_PARCELA',
+            'CRC_CP.HISTORICO',
             'AGENTES.NOME_AGENTE',
             'AGENTES.TIPO as AGENTE_TIPO',
             'CRC_CP.SALDO_DEVEDOR',
@@ -73,6 +74,6 @@ class ContasList extends Component
     #[Layout('layouts.app')]
     public function render()
     {
-        return view('livewire.contas.contas-list');
+        return view('livewire.contas.contas-list', ['contas' => $this->dados()]);
     }
 }
