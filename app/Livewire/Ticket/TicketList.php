@@ -1,17 +1,15 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Ticket;
 
-use App\Models\Ticket as ModelsTicket;
+use App\Models\Ticket;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Lazy;
 use Livewire\Component;
-use Livewire\WithPagination;
 
-class Ticket extends Component
+class TicketList extends Component
 {
-    use WithPagination;
-
     public $sortField = 'ID';
     public $sortAsc = true;
 
@@ -42,7 +40,7 @@ class Ticket extends Component
     {
         $codRica =  Auth::user()->CODIGO_RCFIN;
 
-        $tickets = ModelsTicket::where('CLIENTE_CODIGO', $codRica)
+        $tickets = Ticket::where('CLIENTE_CODIGO', $codRica)
             ->where('TIPO', 'K')
 
             // Pesquisas da tabela
@@ -66,6 +64,6 @@ class Ticket extends Component
     #[Layout('layouts.app')]
     public function render()
     {
-        return view('livewire.ticket', ['tickets' => $this->dados()]);
+        return view('livewire.ticket.ticket-list', ['tickets' => $this->dados()]);
     }
 }

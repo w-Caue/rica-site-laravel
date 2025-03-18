@@ -152,7 +152,7 @@
                             @forelse ($tickets as $ticket)
                                 <tr wire:key="{{ $ticket->ID }}" x-data
                                     x-on:click="$dispatch('open-modal-main', { name : 'clientes' })"
-                                    wire:click="$dispatchTo('ticket-detalhe','dados', { codigo: {{ $ticket->ID }}})"
+                                    wire:click="$dispatchTo('ticket.ticket-detalhe','dados', { codigo: {{ $ticket->ID }}})"
                                     class="font-semibold text-sm hover:text-orange-500 hover:cursor-pointer hover:bg-gray-50">
                                     <td class="py-4 text-center ">
                                         #{{ $ticket->ID }}
@@ -235,7 +235,7 @@
                 @foreach ($tickets as $ticket)
                     <div wire:key="{{ $ticket->ID }}"
                         x-on:click="$dispatch('open-modal-main', { name : 'clientes' })"
-                        wire:click="$dispatchTo('ticket-detalhe','dados', { codigo: {{ $ticket->ID }}})"
+                        wire:click="$dispatchTo('ticket.ticket-detalhe','dados', { codigo: {{ $ticket->ID }}})"
                         class="p-2 space-y-0 rounded-xl border border-gray-300 transition-all hover:scale-95 hover:cursor-pointer">
 
                         <div class="space-y-1 w-full text-xs">
@@ -284,5 +284,5 @@
         </div>
     </div>
 
-    @livewire('ticket-detalhe')
+    @livewire('ticket.ticket-detalhe')
 </div>
