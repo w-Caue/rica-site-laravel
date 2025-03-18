@@ -25,7 +25,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-[#FDFDFC] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center flex-col">
+<body class="bg-[#FDFDFC] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
     <header id="navbar" class="w-full container text-sm mb-6 not-has-[nav]:hidden sticky top-1 z-50">
         @if (Route::has('login'))
             <nav class="flex items-center justify-between gap-4">
@@ -132,13 +132,6 @@
 
         </main>
     </div>
-
-    <div class="font-semibold uppercase text-sm tracking-wider text-gray-600 text-center mt-[10rem]">
-        Adotado Por:
-    </div>
-
-    @include('components.site.logos')
-
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"
