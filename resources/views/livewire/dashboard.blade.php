@@ -14,7 +14,7 @@
                 </x-card.icon-card>
             </a>
 
-            <a title="Total de clientes que você tem acesso">
+            <a href="{{ route('rica.contas') }}" title="Total de clientes que você tem acesso">
                 <x-card.icon-card title="Financeiro" subtitle="Verifique suas contas">
                     <div class="p-3 mr-4 text-purple-500 bg-purple-100 rounded-full">
                         <x-icons.tickets />
@@ -79,7 +79,73 @@
                         <!--./CARD -->
                     @else
                         <div class="flex justify-center">
-                            <button class="text-sm uppercase font-semibold bg-green-100 text-green-500 rounded-full p-2">
+                            <button
+                                class="text-sm uppercase font-semibold bg-green-100 text-green-500 rounded-full p-2">
+                                Nenhum Ticket Registrado
+                            </button>
+                        </div>
+                    @endif
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="w-full">
+
+        </div>
+    </div>
+
+    <div class="relative grid gap-4 md:grid-cols-5">
+        <div class="col-span-2 space-y-7">
+            <div class="w-full">
+                <div class="h-auto px-5 py-5 bg-white rounded-xl shadow-md">
+                    <h1 class="text-sm tracking-widest font-semibold uppercase text-gray-400">
+                        Conta pendente
+                    </h1>
+                    <div class="border border-gray-300 mt-2 mb-6"></div>
+
+                    @if ($conta)
+                        <!-- CARD -->
+                        <!-- CARD -->
+                        <div class="flex flex-col gap-4 mt-4 p-3 lg:hidden">
+                            @foreach ($contas as $conta)
+                                <div wire:key="{{ $conta->COD_SEQ }}"
+                                    class="p-2 space-y-0 rounded-xl border border-gray-300 transition-all hover:scale-95 hover:cursor-pointer @if ($conta->SALDO_DEVEDOR > 0) {{ $dataAtual > $conta->DT_VENCIMENTO ? 'text-red-500 border-red-100' : '' }} @endif">
+
+                                    <div class="space-y-1 w-full text-xs">
+                                        <div class="flex justify-between items-center mb-2">
+                                            <span class="font-bold text-xs">#{{ $conta->N_DOCUMENTO }}</span>
+
+                                            <button
+                                                class="p-1 rounded-full text-xs uppercase {{ $conta->SALDO_DEVEDOR == 0 ? 'text-blue-500 bg-blue-200' : 'text-orange-500 bg-orange-200' }}">
+                                                {{ $conta->SALDO_DEVEDOR == 0 ? 'Pago' : 'A Pagar' }}
+                                            </button>
+                                        </div>
+
+                                        <div class="font-bold text-sm uppercase">
+                                            {{ convert($conta->HISTORICO) }}
+                                        </div>
+
+                                        <div class="flex justify-between items-center flex-wrap font-semibold">
+                                            <div class="text-xs uppercase ">
+                                                Venci.:{{ formataData($conta->DT_VENCIMENTO) }}
+                                            </div>
+
+                                            <div class="text-sm">
+                                                <span
+                                                    class="text-xs ">R$</span>{{ number_format($conta->VL_DOCUMENTO, 2, ',', ' ') }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <!--./CARD -->
+                    @else
+                        <div class="flex justify-center">
+                            <button
+                                class="text-sm uppercase font-semibold bg-green-100 text-green-500 rounded-full p-2">
                                 Nenhum Ticket Registrado
                             </button>
                         </div>
