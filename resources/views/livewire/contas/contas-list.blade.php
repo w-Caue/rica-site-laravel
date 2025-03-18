@@ -43,74 +43,34 @@
                 <div class="w-full overflow-x-auto rounded-xl">
                     <table class="w-full rounded-xl bg-gray-100 shadow-xs">
                         <thead class="">
-                            <tr x-cloak x-data="{ tooltip: 'nenhum' }"
+                            <tr x-cloak
                                 class="relative text-xs font-semibold tracking-wide text-center text-gray-500 uppercase border-b border-gray-200">
                                 <th class="px-4 py-3">
                                     <div class="flex justify-center">
-                                        <div class="flex justify-center gap-1 items-center cursor-pointer"
-                                            wire:click="sortBy('N_DOCUMENTO')" x-on:mouseover="tooltip = 'N_DOCUMENTO'"
-                                            x-on:mouseleave="tooltip = 'nenhum'">
-                                            @include('includes.icon-search', [
-                                                'field' => 'N_DOCUMENTO',
-                                            ])
-                                            <button class="text-xs font-medium leading-4 tracking-wider uppercase">N°
-                                                Doc</button>
-                                            @include('includes.icon-filter', [
-                                                'field' => 'N_DOCUMENTO',
-                                            ])
-                                        </div>
-
-                                        <div x-cloak x-show="tooltip === 'N_DOCUMENTO'" x-transition
-                                            x-transition.duration.300ms
-                                            class="absolute z-10 p-2 mt-6 text-xs text-blue-500 font-bold bg-gray-50 border border-gray-200 rounded-xl">
-                                            <p>Ordenar pelo o N° Doc</p>
+                                        <div class="flex justify-center gap-1 items-center cursor-pointer">
+                                            <button class="text-xs font-medium leading-4 tracking-wider uppercase">
+                                                N° Doc
+                                            </button>
                                         </div>
                                     </div>
                                 </th>
 
                                 <th class="px-4 py-3">
                                     <div class="flex justify-center">
-                                        <div class="flex justify-center gap-1 items-center cursor-pointer"
-                                            wire:click="sortBy('HISTORICO')" x-on:mouseover="tooltip = 'HISTORICO'"
-                                            x-on:mouseleave="tooltip = 'nenhum'">
-                                            @include('includes.icon-search', [
-                                                'field' => 'HISTORICO',
-                                            ])
-                                            <button
-                                                class="text-xs font-medium leading-4 tracking-wider uppercase">Histórico</button>
-                                            @include('includes.icon-filter', [
-                                                'field' => 'HISTORICO',
-                                            ])
-                                        </div>
-
-                                        <div x-cloak x-show="tooltip === 'assunto'" x-transition
-                                            x-transition.duration.300ms
-                                            class="absolute z-10 p-2 mt-6 text-xs text-blue-500 font-bold bg-gray-50 border border-gray-200 rounded-xl">
-                                            <p>Ordenar pelo o Cliente</p>
+                                        <div class="flex justify-center gap-1 items-center cursor-pointer">
+                                            <button class="text-xs font-medium leading-4 tracking-wider uppercase">
+                                                Histórico
+                                            </button>
                                         </div>
                                     </div>
                                 </th>
 
                                 <th class="px-4 py-3">
                                     <div class="flex justify-center">
-                                        <div class="flex justify-center gap-1 items-center cursor-pointer"
-                                            wire:click="sortBy('DT_VENCIMENTO')"
-                                            x-on:mouseover="tooltip = 'DT_VENCIMENTO'"
-                                            x-on:mouseleave="tooltip = 'nenhum'">
-                                            @include('includes.icon-search', [
-                                                'field' => 'DT_VENCIMENTO',
-                                            ])
-                                            <button class="text-xs font-medium leading-4 tracking-wider uppercase">Data
-                                                Venc</button>
-                                            @include('includes.icon-filter', [
-                                                'field' => 'DT_VENCIMENTO',
-                                            ])
-                                        </div>
-
-                                        <div x-cloak x-show="tooltip === 'DT_VENCIMENTO'" x-transition
-                                            x-transition.duration.300ms
-                                            class="absolute z-10 p-2 mt-6 text-xs text-blue-500 font-bold bg-gray-50 border border-gray-200 rounded-xl">
-                                            <p>Ordenar pelo o Data Venc</p>
+                                        <div class="flex justify-center gap-1 items-center cursor-pointer">
+                                            <button class="text-xs font-medium leading-4 tracking-wider uppercase">
+                                                Data Venc
+                                            </button>
                                         </div>
                                     </div>
                                 </th>
@@ -165,58 +125,66 @@
                                         </button>
                                     </td>
 
-                                    <td x-data="{ menu: false, tooltip: 'nenhum' }" class="relative py-3 text-center flex justify-center">
-                                        <div class="flex items-center space-x-2">
-                                            <button x-on:click="menu = !menu;" @keydown.escape="menu = false"
-                                                @click.away="menu = false;"
-                                                class="flex items-center justify-between px-2 py-2 font-medium leading-5 text-blue-600 rounded-full hover:bg-gray-200 hover:scale-95">
-                                                <svg class="size-5" xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 24 24" fill="currentColor">
-                                                    <path
-                                                        d="M12 3C10.9 3 10 3.9 10 5C10 6.1 10.9 7 12 7C13.1 7 14 6.1 14 5C14 3.9 13.1 3 12 3ZM12 17C10.9 17 10 17.9 10 19C10 20.1 10.9 21 12 21C13.1 21 14 20.1 14 19C14 17.9 13.1 17 12 17ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10Z">
-                                                    </path>
-                                                </svg>
-                                            </button>
+                                    <td x-data="{ menu: false }" class="relative py-3 text-center flex justify-center">
+                                        @if ($conta->SALDO_DEVEDOR > 0)
+                                            <div class="flex items-center space-x-2">
+                                                <button x-on:click="menu = !menu;" @keydown.escape="menu = false"
+                                                    @click.away="menu = false;"
+                                                    class="flex items-center justify-between px-2 py-2 font-medium leading-5 text-blue-600 rounded-full hover:bg-gray-200 hover:scale-95">
+                                                    <svg class="size-5" xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 24 24" fill="currentColor">
+                                                        <path
+                                                            d="M12 3C10.9 3 10 3.9 10 5C10 6.1 10.9 7 12 7C13.1 7 14 6.1 14 5C14 3.9 13.1 3 12 3ZM12 17C10.9 17 10 17.9 10 19C10 20.1 10.9 21 12 21C13.1 21 14 20.1 14 19C14 17.9 13.1 17 12 17ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10Z">
+                                                        </path>
+                                                    </svg>
+                                                </button>
 
 
-                                            <template x-if="menu">
-                                                <ul x-transition:leave="transition ease-in duration-150"
-                                                    x-transition:leave-start="opacity-100"
-                                                    x-transition:leave-end="opacity-0" @keydown.escape="menu = false; "
-                                                    class="absolute right-7 top-8 z-40 w-44 p-2 mt-4 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md"
-                                                    aria-label="submenu">
+                                                <template x-if="menu">
+                                                    <ul x-transition:leave="transition ease-in duration-150"
+                                                        x-transition:leave-start="opacity-100"
+                                                        x-transition:leave-end="opacity-0"
+                                                        @keydown.escape="menu = false; "
+                                                        class="absolute right-7 top-8 z-40 w-44 p-2 mt-4 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md"
+                                                        aria-label="submenu">
 
-                                                    <li class="flex">
-                                                        <a href="http://54.94.202.117/api/util/v1/1/boleto/{{ $conta->COD_SEQ }}" target=”_blank”
-                                                            class="inline-flex items-center w-full px-2 py-1 text-xs font-semibold uppercase transition-colors duration-150 rounded-md hover:bg-green-200 hover:text-gray-800">
-                                                            <svg class="size-5 mr-2" xmlns="http://www.w3.org/2000/svg"
-                                                                viewBox="0 0 24 24" fill="currentColor">
-                                                                <path
-                                                                    d="M17 2C17.5523 2 18 2.44772 18 3V7H21C21.5523 7 22 7.44772 22 8V18C22 18.5523 21.5523 19 21 19H18V21C18 21.5523 17.5523 22 17 22H7C6.44772 22 6 21.5523 6 21V19H3C2.44772 19 2 18.5523 2 18V8C2 7.44772 2.44772 7 3 7H6V3C6 2.44772 6.44772 2 7 2H17ZM16 17H8V20H16V17ZM20 9H4V17H6V16C6 15.4477 6.44772 15 7 15H17C17.5523 15 18 15.4477 18 16V17H20V9ZM8 10V12H5V10H8ZM16 4H8V7H16V4Z">
-                                                                </path>
-                                                            </svg>
+                                                        <li class="flex">
+                                                            @if ($conta->AGENTE_TIPO == 'B')
+                                                                <a href="http://54.94.202.117/api/util/v1/1/boleto/{{ $conta->COD_SEQ }}"
+                                                                    target=”_blank”
+                                                                    class="inline-flex items-center w-full px-2 py-1 text-xs font-semibold uppercase transition-colors duration-150 rounded-md hover:bg-green-200 hover:text-gray-800">
+                                                                    <svg class="size-5 mr-2"
+                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                        viewBox="0 0 24 24" fill="currentColor">
+                                                                        <path
+                                                                            d="M17 2C17.5523 2 18 2.44772 18 3V7H21C21.5523 7 22 7.44772 22 8V18C22 18.5523 21.5523 19 21 19H18V21C18 21.5523 17.5523 22 17 22H7C6.44772 22 6 21.5523 6 21V19H3C2.44772 19 2 18.5523 2 18V8C2 7.44772 2.44772 7 3 7H6V3C6 2.44772 6.44772 2 7 2H17ZM16 17H8V20H16V17ZM20 9H4V17H6V16C6 15.4477 6.44772 15 7 15H17C17.5523 15 18 15.4477 18 16V17H20V9ZM8 10V12H5V10H8ZM16 4H8V7H16V4Z">
+                                                                        </path>
+                                                                    </svg>
 
-                                                            <span>Imprimir</span>
-                                                        </a>
-                                                    </li>
+                                                                    <span>Imprimir</span>
+                                                                </a>
+                                                            @endif
+                                                        </li>
 
-                                                    <li class="flex">
-                                                        <button
-                                                            x-on:click="$dispatch('open-modal-primary', { name : 'pagamento' })"
-                                                            class="inline-flex items-center w-full px-2 py-1 text-xs font-semibold uppercase transition-colors duration-150 rounded-md hover:bg-green-200 hover:text-gray-800">
-                                                            <svg class="size-5 mr-2" xmlns="http://www.w3.org/2000/svg"
-                                                                viewBox="0 0 24 24" fill="currentColor">
-                                                                <path
-                                                                    d="M14.4727 1.74514L22.2509 9.52334C23.6177 10.8902 23.6177 13.1063 22.2509 14.4731L14.4727 22.2512C13.1059 23.6181 10.8898 23.6181 9.52303 22.2512L1.74486 14.4731C0.378017 13.1063 0.378017 10.8902 1.74486 9.52334L9.52303 1.74514C10.8898 0.378247 13.1059 0.378247 14.4727 1.74514ZM11.9979 14.8266L9.52301 17.3015C9.14344 17.6811 8.69837 17.9552 8.22419 18.124L10.9372 20.837C11.523 21.4228 12.4727 21.4228 13.0585 20.837L15.7716 18.124C15.2974 17.9552 14.8523 17.6811 14.4727 17.3015L11.9979 14.8266ZM5.98823 8.10835L3.15907 10.9376C2.57328 11.5234 2.57328 12.4731 3.15907 13.0589L5.9875 15.8873C6.57328 16.4731 7.52303 16.4731 8.10882 15.8873L10.5836 13.4124C11.3647 12.6314 12.631 12.6314 13.4121 13.4124L15.8869 15.8873C16.4726 16.4729 17.4224 16.4726 18.0083 15.8873L20.8367 13.0589C21.4225 12.4731 21.4225 11.5234 20.8367 10.9376L18.0083 8.10905C17.4225 7.52435 16.4724 7.52365 15.8869 8.10905L13.4121 10.584C12.631 11.3651 11.3647 11.3651 10.5836 10.584L8.10882 8.10905C7.52328 7.52355 6.57408 7.52335 5.98823 8.10835ZM10.9372 3.15935L8.22419 5.87235C8.69837 6.04115 9.14344 6.31535 9.52301 6.69485L11.9979 9.16975L14.4727 6.69485C14.8523 6.31535 15.2974 6.04115 15.7716 5.87235L13.0585 3.15935C12.4727 2.57355 11.523 2.57355 10.9372 3.15935Z">
-                                                                </path>
-                                                            </svg>
+                                                        <li class="flex">
+                                                            <button
+                                                                x-on:click="$dispatch('open-modal-primary', { name : 'pagamento' })"
+                                                                class="inline-flex items-center w-full px-2 py-1 text-xs font-semibold uppercase transition-colors duration-150 rounded-md hover:bg-green-200 hover:text-gray-800">
+                                                                <svg class="size-5 mr-2"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 24 24" fill="currentColor">
+                                                                    <path
+                                                                        d="M14.4727 1.74514L22.2509 9.52334C23.6177 10.8902 23.6177 13.1063 22.2509 14.4731L14.4727 22.2512C13.1059 23.6181 10.8898 23.6181 9.52303 22.2512L1.74486 14.4731C0.378017 13.1063 0.378017 10.8902 1.74486 9.52334L9.52303 1.74514C10.8898 0.378247 13.1059 0.378247 14.4727 1.74514ZM11.9979 14.8266L9.52301 17.3015C9.14344 17.6811 8.69837 17.9552 8.22419 18.124L10.9372 20.837C11.523 21.4228 12.4727 21.4228 13.0585 20.837L15.7716 18.124C15.2974 17.9552 14.8523 17.6811 14.4727 17.3015L11.9979 14.8266ZM5.98823 8.10835L3.15907 10.9376C2.57328 11.5234 2.57328 12.4731 3.15907 13.0589L5.9875 15.8873C6.57328 16.4731 7.52303 16.4731 8.10882 15.8873L10.5836 13.4124C11.3647 12.6314 12.631 12.6314 13.4121 13.4124L15.8869 15.8873C16.4726 16.4729 17.4224 16.4726 18.0083 15.8873L20.8367 13.0589C21.4225 12.4731 21.4225 11.5234 20.8367 10.9376L18.0083 8.10905C17.4225 7.52435 16.4724 7.52365 15.8869 8.10905L13.4121 10.584C12.631 11.3651 11.3647 11.3651 10.5836 10.584L8.10882 8.10905C7.52328 7.52355 6.57408 7.52335 5.98823 8.10835ZM10.9372 3.15935L8.22419 5.87235C8.69837 6.04115 9.14344 6.31535 9.52301 6.69485L11.9979 9.16975L14.4727 6.69485C14.8523 6.31535 15.2974 6.04115 15.7716 5.87235L13.0585 3.15935C12.4727 2.57355 11.523 2.57355 10.9372 3.15935Z">
+                                                                    </path>
+                                                                </svg>
 
-                                                            <span>Pagar C/ Pix</span>
-                                                        </button>
-                                                    </li>
-                                                </ul>
-                                            </template>
-                                        </div>
+                                                                <span>Pagar C/ Pix</span>
+                                                            </button>
+                                                        </li>
+                                                    </ul>
+                                                </template>
+                                            </div>
+                                        @endif
                                     </td>
                                 </tr>
                             @empty
@@ -235,17 +203,61 @@
             <!-- CARD -->
             <div class="flex flex-col gap-4 mt-4 p-3 lg:hidden">
                 @foreach ($contas as $conta)
-                    <div wire:key="{{ $conta->COD_SEQ }}"
+                    <div wire:key="{{ $conta->COD_SEQ }}" x-data="{ menu: false }"
                         class="p-2 space-y-0 rounded-xl border border-gray-300 transition-all hover:scale-95 hover:cursor-pointer @if ($conta->SALDO_DEVEDOR > 0) {{ $dataAtual > $conta->DT_VENCIMENTO ? 'text-red-500 border-red-100' : '' }} @endif">
 
-                        <div class="space-y-1 w-full text-xs">
+                        <div class="relative space-y-1 w-full text-xs" x-on:click="menu = !menu;"
+                            @keydown.escape="menu = false" @click.away="menu = false;">
                             <div class="flex justify-between items-center mb-2">
                                 <span class="font-bold text-xs">#{{ $conta->N_DOCUMENTO }}</span>
 
-                                <button
-                                    class="p-1 rounded-full text-xs uppercase {{ $conta->SALDO_DEVEDOR == 0 ? 'text-blue-500 bg-blue-200' : 'text-orange-500 bg-orange-200' }}">
-                                    {{ $conta->SALDO_DEVEDOR == 0 ? 'Pago' : 'A Pagar' }}
-                                </button>
+                                <div class="">
+                                    <button
+                                        class="p-1 rounded-full text-xs uppercase {{ $conta->SALDO_DEVEDOR == 0 ? 'text-blue-500 bg-blue-200' : 'text-orange-500 bg-orange-200' }}">
+                                        {{ $conta->SALDO_DEVEDOR == 0 ? 'Pago' : 'A Pagar' }}
+                                    </button>
+
+                                    @if ($conta->SALDO_DEVEDOR > 0)
+                                        <template x-if="menu">
+                                            <ul x-transition:leave="transition ease-in duration-150"
+                                                x-transition:leave-start="opacity-100"
+                                                x-transition:leave-end="opacity-0" @keydown.escape="menu = false; "
+                                                class="absolute right-7 top-8 z-40 w-44 p-2 mt-4 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md"
+                                                aria-label="submenu">
+
+                                                <li class="flex">
+                                                    <a href="http://54.94.202.117/api/util/v1/1/boleto/{{ $conta->COD_SEQ }}"
+                                                        target=”_blank”
+                                                        class="inline-flex items-center w-full px-2 py-1 text-xs font-semibold uppercase transition-colors duration-150 rounded-md hover:bg-green-200 hover:text-gray-800">
+                                                        <svg class="size-5 mr-2" xmlns="http://www.w3.org/2000/svg"
+                                                            viewBox="0 0 24 24" fill="currentColor">
+                                                            <path
+                                                                d="M17 2C17.5523 2 18 2.44772 18 3V7H21C21.5523 7 22 7.44772 22 8V18C22 18.5523 21.5523 19 21 19H18V21C18 21.5523 17.5523 22 17 22H7C6.44772 22 6 21.5523 6 21V19H3C2.44772 19 2 18.5523 2 18V8C2 7.44772 2.44772 7 3 7H6V3C6 2.44772 6.44772 2 7 2H17ZM16 17H8V20H16V17ZM20 9H4V17H6V16C6 15.4477 6.44772 15 7 15H17C17.5523 15 18 15.4477 18 16V17H20V9ZM8 10V12H5V10H8ZM16 4H8V7H16V4Z">
+                                                            </path>
+                                                        </svg>
+
+                                                        <span>Imprimir</span>
+                                                    </a>
+                                                </li>
+
+                                                <li class="flex">
+                                                    <button
+                                                        x-on:click="$dispatch('open-modal-primary', { name : 'pagamento' })"
+                                                        class="inline-flex items-center w-full px-2 py-1 text-xs font-semibold uppercase transition-colors duration-150 rounded-md hover:bg-green-200 hover:text-gray-800">
+                                                        <svg class="size-5 mr-2" xmlns="http://www.w3.org/2000/svg"
+                                                            viewBox="0 0 24 24" fill="currentColor">
+                                                            <path
+                                                                d="M14.4727 1.74514L22.2509 9.52334C23.6177 10.8902 23.6177 13.1063 22.2509 14.4731L14.4727 22.2512C13.1059 23.6181 10.8898 23.6181 9.52303 22.2512L1.74486 14.4731C0.378017 13.1063 0.378017 10.8902 1.74486 9.52334L9.52303 1.74514C10.8898 0.378247 13.1059 0.378247 14.4727 1.74514ZM11.9979 14.8266L9.52301 17.3015C9.14344 17.6811 8.69837 17.9552 8.22419 18.124L10.9372 20.837C11.523 21.4228 12.4727 21.4228 13.0585 20.837L15.7716 18.124C15.2974 17.9552 14.8523 17.6811 14.4727 17.3015L11.9979 14.8266ZM5.98823 8.10835L3.15907 10.9376C2.57328 11.5234 2.57328 12.4731 3.15907 13.0589L5.9875 15.8873C6.57328 16.4731 7.52303 16.4731 8.10882 15.8873L10.5836 13.4124C11.3647 12.6314 12.631 12.6314 13.4121 13.4124L15.8869 15.8873C16.4726 16.4729 17.4224 16.4726 18.0083 15.8873L20.8367 13.0589C21.4225 12.4731 21.4225 11.5234 20.8367 10.9376L18.0083 8.10905C17.4225 7.52435 16.4724 7.52365 15.8869 8.10905L13.4121 10.584C12.631 11.3651 11.3647 11.3651 10.5836 10.584L8.10882 8.10905C7.52328 7.52355 6.57408 7.52335 5.98823 8.10835ZM10.9372 3.15935L8.22419 5.87235C8.69837 6.04115 9.14344 6.31535 9.52301 6.69485L11.9979 9.16975L14.4727 6.69485C14.8523 6.31535 15.2974 6.04115 15.7716 5.87235L13.0585 3.15935C12.4727 2.57355 11.523 2.57355 10.9372 3.15935Z">
+                                                            </path>
+                                                        </svg>
+
+                                                        <span>Pagar C/ Pix</span>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </template>
+                                    @endif
+                                </div>
                             </div>
 
                             <div class="font-bold text-sm uppercase">
@@ -286,7 +298,8 @@
                     Clique no CNPJ para copiar
                 </h1>
                 <div class="flex items-center flex-col gap-1 mb-4">
-                    <button class="bg-white p-2 rounded-md hover:cursor-pointer" wire:click="copy()" onclick="copiarParaClipboard('04959577000186')">
+                    <button class="bg-white p-2 rounded-md hover:cursor-pointer" wire:click="copy()"
+                        onclick="copiarParaClipboard('04959577000186')">
                         04.959.577/0001-86
                     </button>
                     <span>Rica Desenvolvimento</span>
@@ -297,7 +310,8 @@
                 </h1>
 
                 <div class="flex justify-center mt-2">
-                    <a class="flex items-center gap-1 bg-green-100 p-2 rounded-md text-green-500 hover:scale-95 transition-all" href="https://api.whatsapp.com/send?phone=5585996317902" target="_blank"
+                    <a class="flex items-center gap-1 bg-green-100 p-2 rounded-md text-green-500 hover:scale-95 transition-all"
+                        href="https://api.whatsapp.com/send?phone=5585996317902" target="_blank"
                         rel="noopener noreferrer">
                         <svg class="size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                             <path
