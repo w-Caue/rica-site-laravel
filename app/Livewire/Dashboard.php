@@ -12,9 +12,12 @@ class Dashboard extends Component
 {
     public $codRica;
 
+    public $dataAtual;
+
     public function mount()
     {
         $this->codRica = Auth::user()->CODIGO_RCFIN;
+        $this->dataAtual = date('Y-m-d');
     }
 
     public function ticket()
@@ -29,9 +32,30 @@ class Dashboard extends Component
 
     public function conta()
     {
-        $contas = Contas::orderBy('N_DOCUMENTO')
-            ->where('CLIENTE', $this->codRica)
-            ->where('SALDO_DEVEDOR', '0')
+        $contas = Contas::select(
+            'CRC_CP.COD_SEQ',
+            'CRC_CP.CLIENTE',
+            'CLIENTES.CNPJ',
+            'CRC_CP.N_DOCUMENTO',
+            'CRC_CP.DT_VENCIMENTO',
+            'CRC_CP.VL_DOCUMENTO',
+            'CRC_CP.N_PARCELA',
+            'CRC_CP.HISTORICO',
+            'CRC_CP.SALDO_DEVEDOR',
+        )
+            ->leftJoin('CLIENTES', 'CRC_CP.CLIENTE', '=', 'CLIENTES.CODIGO')
+
+            ->where('CRC_CP.TIPO', '=', 'R')
+            ->where('CLIENTES.CNPJ', '=', Auth::user()->CNPJ)
+            ->where('CRC_CP.DELETADO', '=', 0)
+
+            ->where(function ($query) {
+                $query
+                    ->where('SOMA_FLAG', '<>', 'S')
+                    ->orWhere('SOMA_FLAG', '=', null);
+            })
+
+            ->orderBy('CRC_CP.DT_VENCIMENTO', 'DESC')
             ->first();
 
         return $contas;
@@ -41,6 +65,9 @@ class Dashboard extends Component
     #[Layout('layouts.app')]
     public function render()
     {
-        return view('livewire.dashboard', ['ticket' => $this->ticket(), 'conta' => $this->conta()]);
+        return view('livewire.dashboard', [
+            'ticket' => $this->ticket(),
+            'conta' => $this->conta()
+        ]);
     }
 }
