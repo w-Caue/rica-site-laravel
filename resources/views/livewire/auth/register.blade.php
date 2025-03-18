@@ -4,9 +4,25 @@
 
         <form class="flex flex-col gap-6">
             <div>
-                <x-form.label value="Cnpj" />
-                <x-form.input wire:model="cnpj" placeholder="00.000.000/0000-00"
-                    x-mask:dynamic=" $input.startsWith('18') ? '99.999.999/9999-99' : '99.999.999/9999-99' " />
+                @if ($checkCnpj)
+                    <div>
+                        <x-form.label value="CPF" />
+                        <x-form.input wire:model="cnpj" placeholder="000.000.000-00"
+                            x-mask:dynamic=" $input.startsWith('18') ? '999.999.999-99' : '999.999.999-99' " wire:keydown.tab='validaCPF()' wire:keydown.enter='validaCPF()' />
+                    </div>
+                @else
+                    <div>
+                        <x-form.label value="Cnpj" />
+                        <x-form.input wire:model="cnpj" placeholder="00.000.000/0000-00"
+                            x-mask:dynamic=" $input.startsWith('18') ? '99.999.999/9999-99' : '99.999.999/9999-99' " wire:keydown.tab='validaCNPJ()' wire:keydown.enter='validaCNPJ()' />
+                    </div>
+                @endif
+
+                <div class="flex items-center gap-2 mt-1">
+                    <x-form.checkbox wire:model.live="checkCnpj" wire:click="delInput()"/>
+                    <x-form.label value="Não tenho CNPJ" />
+                </div>
+
             </div>
 
             <!-- Name -->
@@ -22,7 +38,8 @@
 
             <div class="flex justify-center">
                 @if ($button)
-                    <a href="https://api.whatsapp.com/send?phone=558597683479&text=*NOVO+CLIENTE*+🤩%0D%0D👤+Nome+do+Cliente:+{{ strtoupper($nome) }}%0D%0D🏙+CNPJ:+{{ $cnpj }}%0D%0D✉+E-mail:+{{ $email }}" target="_blank"
+                    <a href="https://api.whatsapp.com/send?phone=558597683479&text=*NOVO+CLIENTE*+🤩%0D%0D👤+Nome+do+Cliente:+{{ strtoupper($nome) }}%0D%0D🏙+CNPJ/CPF:+{{ $cnpj }}%0D%0D✉+E-mail:+{{ $email }}"
+                        target="_blank"
                         class="text-sm uppercase flex items-center font-semibold justify-center gap-1 text-gray-600 bg-blue-200 rounded-md p-2 transition-all hover:scale-95 focus:outline-blue-600">
                         Enviar
                     </a>
