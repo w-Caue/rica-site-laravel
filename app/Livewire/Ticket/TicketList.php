@@ -7,9 +7,12 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Lazy;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class TicketList extends Component
 {
+    use WithPagination;
+    
     public $sortField = 'ID';
     public $sortAsc = true;
 

@@ -27,7 +27,7 @@
         }
     </style>
 
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     @livewireStyles
 </head>
@@ -50,6 +50,30 @@
     </div>
 
     @livewireScripts
+
+    <script>
+        function copiarParaClipboard(valor) {
+            // Cria um elemento de input para armazenar o valor
+            var inputElement = document.createElement("input");
+
+            // Define o valor do input para o valor passado por parâmetro
+            inputElement.value = valor;
+
+            // Adiciona o input ao corpo do documento
+            document.body.appendChild(inputElement);
+
+            // Seleciona o conteúdo do input
+            inputElement.select();
+
+            // Copia o conteúdo para a área de transferência
+            document.execCommand("copy");
+
+            // Remove o input do corpo do documento
+            document.body.removeChild(inputElement);
+
+            console.log("Valor copiado para o clipboard: " + valor);
+        }
+    </script>
 
     <script src=" {{ asset('js/main.js') }}"></script>
 

@@ -4,11 +4,15 @@ namespace App\Livewire\Contas;
 
 use App\Models\Rcfin\Contas;
 use Illuminate\Support\Facades\Auth;
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ContasList extends Component
 {
+    use WithPagination;
+
     public $sortField = 'ID';
     public $sortAsc = true;
 
@@ -17,6 +21,10 @@ class ContasList extends Component
     public $porPagina = '5';
 
     public $readyToLoad = false;
+
+    public $dataAtual;
+
+    public $filterStatus = 'A';
 
     public function sortBy($field)
     {
@@ -31,6 +39,11 @@ class ContasList extends Component
     public function load()
     {
         $this->readyToLoad = true;
+    }
+
+    public function mount()
+    {
+        $this->dataAtual = date('Y-m-d');
     }
 
     public function dados()
@@ -56,19 +69,37 @@ class ContasList extends Component
         )
             ->leftJoin('CLIENTES', 'CRC_CP.CLIENTE', '=', 'CLIENTES.CODIGO')
             ->leftJoin('AGENTES', 'CRC_CP.AG_COBRADOR', 'AGENTES.CODAGENTE')
+
             ->where('CRC_CP.TIPO', '=', 'R')
             ->where('CLIENTES.CNPJ', '=', $clienteCnpj)
-            // ->where('CRC_CP.SALDO_DEVEDOR', '<>', 0)
             ->where('CRC_CP.DELETADO', '=', 0)
+
             ->where(function ($query) {
                 $query
                     ->where('SOMA_FLAG', '<>', 'S')
                     ->orWhere('SOMA_FLAG', '=', null);
             })
+
+            ->when($this->filterStatus == 'A', function ($query) {
+                return $query->where('CRC_CP.SALDO_DEVEDOR', '>', 0);
+            })
+
+            ->when($this->filterStatus == 'P', function ($query) {
+                return $query->where('CRC_CP.SALDO_DEVEDOR', '=', 0);
+            })
+
             ->orderBy('CRC_CP.DT_VENCIMENTO', 'DESC')
             ->paginate($this->porPagina);
 
         return $contas;
+    }
+
+    public function copy()
+    {
+        return LivewireAlert::title('CNPJ COPIADO')
+            ->success()
+            ->toast()
+            ->show();
     }
 
     #[Layout('layouts.app')]
