@@ -3,6 +3,7 @@
 namespace App\Livewire\Contas;
 
 use App\Models\Rcfin\Contas;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 use Livewire\Attributes\Layout;
@@ -50,6 +51,8 @@ class ContasList extends Component
     {
         $clienteCnpj =  Auth::user()->CNPJ;
 
+        $data =  Carbon::now()->addMonths(-6)->format('d M Y');
+
         $contas = Contas::select(
             'CRC_CP.COD_SEQ',
             'CRC_CP.TIPO',
@@ -59,6 +62,7 @@ class ContasList extends Component
             'CLIENTES.NOME as NOME_CLIENTE',
             'CRC_CP.N_DOCUMENTO',
             'CRC_CP.DT_VENCIMENTO',
+            'CRC_CP.DT_LANCAMENTO',
             'CRC_CP.VL_DOCUMENTO',
             'CRC_CP.N_PARCELA',
             'CRC_CP.HISTORICO',
@@ -79,6 +83,8 @@ class ContasList extends Component
                     ->where('SOMA_FLAG', '<>', 'S')
                     ->orWhere('SOMA_FLAG', '=', null);
             })
+
+            ->where('CRC_CP.DT_LANCAMENTO', '>', $data)
 
             ->when($this->filterStatus == 'A', function ($query) {
                 return $query->where('CRC_CP.SALDO_DEVEDOR', '>', 0);
