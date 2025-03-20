@@ -29,7 +29,7 @@
     <div class="relative grid gap-4 lg:grid-cols-5">
         <div class="lg:col-span-2 space-y-7">
             <div class="w-full">
-                <div class="h-auto px-5 py-5 bg-white rounded-xl shadow-md">
+                <div class="h-56 px-5 py-5 bg-white rounded-xl shadow-md">
                     <h1 class="text-sm tracking-widest font-semibold uppercase text-gray-400">
                         Último ticket criado
                     </h1>
@@ -91,7 +91,7 @@
         </div>
 
         <div class="lg:col-span-2 w-full">
-            <div class="h-auto px-5 py-5 bg-white rounded-xl shadow-md">
+            <div class="h-56 px-5 py-5 bg-white rounded-xl shadow-md">
                 <h1 class="text-sm tracking-widest font-semibold uppercase text-gray-400">
                     Conta pendente
                 </h1>
@@ -107,25 +107,25 @@
                                 <div class="flex justify-between items-center mb-2">
                                     <span class="font-bold text-xs">#{{ $conta->N_DOCUMENTO }}</span>
 
-                                    <button
-                                        class="p-1 rounded-full text-xs uppercase {{ $conta->SALDO_DEVEDOR == 0 ? 'text-blue-500 bg-blue-200' : 'text-orange-500 bg-orange-200' }}">
-                                        {{ $conta->SALDO_DEVEDOR == 0 ? 'Pago' : 'A Pagar' }}
-                                    </button>
+                                    <div class="text-xs uppercase ">
+                                        Venci.:{{ formataData($conta->DT_VENCIMENTO) }}
+                                    </div>
                                 </div>
 
-                                <div class="font-bold text-sm uppercase">
+                                <div class="font-bold text-xs uppercase">
                                     {{ convert($conta->HISTORICO) }}
                                 </div>
 
                                 <div class="flex justify-between items-center flex-wrap font-semibold">
-                                    <div class="text-xs uppercase ">
-                                        Venci.:{{ formataData($conta->DT_VENCIMENTO) }}
-                                    </div>
-
-                                    <div class="text-sm">
+                                    <div class="text-xs">
                                         <span
                                             class="text-xs ">R$</span>{{ number_format($conta->VL_DOCUMENTO, 2, ',', ' ') }}
                                     </div>
+
+                                    <button
+                                        class="p-2 rounded-full text-xs uppercase {{ $conta->SALDO_DEVEDOR == 0 ? 'text-blue-500 bg-blue-200' : 'text-orange-500 bg-orange-200' }}">
+                                        {{ $conta->SALDO_DEVEDOR == 0 ? 'Pago' : 'A Pagar' }}
+                                    </button>
                                 </div>
                             </div>
                         </div>

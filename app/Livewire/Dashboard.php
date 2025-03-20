@@ -46,6 +46,7 @@ class Dashboard extends Component
             ->leftJoin('CLIENTES', 'CRC_CP.CLIENTE', '=', 'CLIENTES.CODIGO')
 
             ->where('CRC_CP.TIPO', '=', 'R')
+            ->where('CRC_CP.SALDO_DEVEDOR', '>', 0)
             ->where('CLIENTES.CNPJ', '=', Auth::user()->CNPJ)
             ->where('CRC_CP.DELETADO', '=', 0)
 
