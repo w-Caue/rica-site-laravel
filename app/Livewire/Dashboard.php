@@ -46,6 +46,7 @@ class Dashboard extends Component
             ->leftJoin('CLIENTES', 'CRC_CP.CLIENTE', '=', 'CLIENTES.CODIGO')
 
             ->where('CRC_CP.TIPO', '=', 'R')
+            ->where('CRC_CP.SALDO_DEVEDOR', '>', 0)
             ->where('CLIENTES.CNPJ', '=', Auth::user()->CNPJ)
             ->where('CRC_CP.DELETADO', '=', 0)
 
@@ -57,7 +58,7 @@ class Dashboard extends Component
 
             ->orderBy('CRC_CP.DT_VENCIMENTO', 'DESC')
             ->first();
-
+        // dd($contas);
         return $contas;
     }
 
