@@ -25,7 +25,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-[#FDFDFC] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
+<body
+    class="bg-[#FDFDFC] text-[#1b1b18] font-semibold flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
     <header id="navbar" class="w-full container text-sm mb-6 not-has-[nav]:hidden sticky top-1 z-50">
         @if (Route::has('login'))
             <nav class="flex items-center justify-between gap-4">
@@ -74,6 +75,25 @@
                 </div>
             </nav>
         @endif
+
+        <div class="bg-gray-100 p-1 rounded-md lg:hidden">
+            <div class="flex justify-center text-xs">
+                <a href=""
+                    class="inline-block px-2 py-1.5 text-[#1b1b18] border border-transparent hover:border-[#19140035] rounded-sm leading-normal">
+                    Inicio
+                </a>
+
+                <a href=""
+                    class="inline-block px-2 py-1.5 text-[#1b1b18] border border-transparent hover:border-[#19140035] rounded-sm leading-normal">
+                    Funcionalidades
+                </a>
+
+                <a href=""
+                    class="inline-block px-2 py-1.5 text-[#1b1b18] border border-transparent hover:border-[#19140035] rounded-sm leading-normal">
+                    Sobre nós
+                </a>
+            </div>
+        </div>
     </header>
 
     <div id="content"

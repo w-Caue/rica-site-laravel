@@ -26,8 +26,8 @@
         <!--./Cards-->
     </div>
 
-    <div class="relative grid gap-4 md:grid-cols-5">
-        <div class="col-span-2 space-y-7">
+    <div class="relative grid gap-4 lg:grid-cols-5">
+        <div class="lg:col-span-2 space-y-7">
             <div class="w-full">
                 <div class="h-auto px-5 py-5 bg-white rounded-xl shadow-md">
                     <h1 class="text-sm tracking-widest font-semibold uppercase text-gray-400">
@@ -58,7 +58,7 @@
 
                                     <div class="flex justify-between items-center flex-wrap font-semibold">
                                         <div class="text-xs uppercase ">
-                                            {{ $ticket->DATA_CRIACAO }}
+                                            {{ formataData($ticket->DATA_CRIACAO) }}
                                         </div>
 
                                         <button
@@ -88,10 +88,9 @@
 
                 </div>
             </div>
-
         </div>
 
-        <div class="w-full">
+        <div class="lg:col-span-2 w-full">
             <div class="h-auto px-5 py-5 bg-white rounded-xl shadow-md">
                 <h1 class="text-sm tracking-widest font-semibold uppercase text-gray-400">
                     Conta pendente
