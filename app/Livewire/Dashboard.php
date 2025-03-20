@@ -42,8 +42,10 @@ class Dashboard extends Component
             'CRC_CP.N_PARCELA',
             'CRC_CP.HISTORICO',
             'CRC_CP.SALDO_DEVEDOR',
+            'AGENTES.TIPO as AGENTE_TIPO',
         )
             ->leftJoin('CLIENTES', 'CRC_CP.CLIENTE', '=', 'CLIENTES.CODIGO')
+            ->leftJoin('AGENTES', 'CRC_CP.AG_COBRADOR', 'AGENTES.CODAGENTE')
 
             ->where('CRC_CP.TIPO', '=', 'R')
             ->where('CRC_CP.SALDO_DEVEDOR', '>', 0)
@@ -57,7 +59,7 @@ class Dashboard extends Component
             })
 
             ->orderBy('CRC_CP.DT_VENCIMENTO', 'DESC')
-            ->first();
+            ->get();
 
         return $contas;
     }
@@ -68,7 +70,7 @@ class Dashboard extends Component
     {
         return view('livewire.dashboard', [
             'ticket' => $this->ticket(),
-            'conta' => $this->conta()
+            'contas' => $this->conta()
         ]);
     }
 }
