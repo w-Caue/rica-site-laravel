@@ -40,7 +40,7 @@
                         <div class="flex flex-col gap-4 mt-4 p-3">
                             <div wire:key="{{ $ticket->ID }}"
                                 x-on:click="$dispatch('open-modal-main', { name : 'clientes' })"
-                                wire:click="$dispatchTo('ticket-detalhe','dados', { codigo: {{ $ticket->ID }}})"
+                                wire:click="$dispatchTo('ticket.ticket-detalhe','dados', { codigo: {{ $ticket->ID }}})"
                                 class="p-2 space-y-0 rounded-xl border border-gray-300 transition-all hover:scale-95 hover:cursor-pointer">
 
                                 <div class="space-y-1 w-full text-xs">
