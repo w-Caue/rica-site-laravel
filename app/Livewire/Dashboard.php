@@ -59,9 +59,8 @@ class Dashboard extends Component
             })
 
             ->orderBy('CRC_CP.DT_VENCIMENTO', 'DESC')
-            ->first();
-        dd($contas);
-        dd($ticket);
+            ->get();
+
         return $contas;
     }
 
